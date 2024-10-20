@@ -1,0 +1,39 @@
+#Set your git settings to native LF line endings.
+#git config --global core.autocrlf false
+#git config --global core.eol lf
+
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+# Explicitly declare text files you want to always be normalized and converted
+# to native line endings on checkout.
+#*.c text
+#*.h text
+
+# Declare files that will always have LF line endings on checkout.
+*.sh text eol=lf
+*.bash text eol=lf
+*.sql text eol=lf
+*.Dockerfile text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.cnf text eol=lf
+*.out text eol=lf
+*.xml text eol=lf
+*.properties text eol=lf
+*.env text eol=lf
+*.env_Local text eol=lf
+*.txt text eol=lf
+*.cpp text eol=lf
+.bashrc text eol=lf
+*.js text eol=lf
+
+# Declare files that will always have CRLF line endings on checkout.
+*.ps1 text eol=crlf
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
+*.jar binary
+*.war binary
+*.exe binary
