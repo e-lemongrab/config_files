@@ -1,0 +1,86 @@
+#!/usr/bin/env julia
+# This goes in ~
+# /etc/inputrc - global inputrc for libreadline
+# See readline(3readline) and `info rluserman' for more information.
+
+# Reload inputrc
+# bind -f ~/.inputrc
+
+# List bindings
+# bind -P
+
+# do not bell on tab-completion
+set bell-style none
+
+#disable case sensitivity only in Bash
+set completion-ignore-case on
+#Easy TAB for directories
+TAB: menu-complete
+set show-all-if-ambiguous on
+
+#Allow search in history
+"\e[A": history-search-backward # Bind Up Arrow
+"\e[B": history-search-forward # Bind Down Arrow
+
+# Delete key
+"\e[3~": delete-char
+
+# Copy the selected text or command (Ctrl + C)
+"\C-c": copy
+
+# Paste copied text or command (Ctrl + V)
+"\C-v": paste
+
+# Stop the current process/command (Ctrl + Shift + C)
+#"\e[19;5~": interrupt
+"\C-x": interrupt
+
+# Default
+
+# Move to the start of the line (Ctrl + A)
+"\C-a": beginning-of-line
+
+# Move to the end of the line (Ctrl + E)
+"\C-e": end-of-line
+
+# Delete from the cursor to the start of the line (Ctrl + U)
+"\C-u": backward-kill-line
+
+# Delete from the cursor to the end of the line (Ctrl + K)
+"\C-k": kill-line
+
+# Delete the word before the cursor (Ctrl + W)
+"\C-w": backward-kill-word
+
+# Clear the terminal screen (Ctrl + L)
+"\C-l": clear-screen
+
+# Log out or exit the terminal (Ctrl + D)
+"\C-d": logout
+
+# Pause the current process (can be resumed) (Ctrl + Z)
+"\C-z": suspend
+
+# Search command history (backward search) (Ctrl + R)
+"\C-r": reverse-search-history
+
+# Repeat the last command (!!)
+"!!": previous-history
+
+# Repeat the nth command from history (!n)
+"!n": history-search-backward
+
+# Auto-complete commands, files, or directories (Tab)
+"\t": complete
+
+# List all possible completions (Tab twice)
+"\t\t": list-completions
+
+# Open a new terminal window (Ctrl + Shift + N)
+"\e[19;5~": new-terminal-window
+
+# Open a new tab in the terminal (Ctrl + Shift + T)
+"\e[19;6~": new-terminal-tab
+
+# Switch between terminal tabs (Ctrl + Tab or Ctrl + PageDown)
+"\e[19;5~": switch-tabs

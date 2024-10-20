@@ -1,0 +1,50 @@
+# Alacritty Configuration File
+# Options - https://alacritty.org/config-alacritty.html
+[shell]
+	args = ["--login"]
+	program = "/bin/bash"
+
+[colors]
+    [colors.primary]
+    background = "#0E1415"
+    foreground = "#CECECE"
+
+    [colors.bright]
+    black = "#91a3b0"
+    blue = "#7da6ff"
+    cyan = "#20b2aa"
+    green = "#228b22"
+    magenta = "#8b008b"
+    red = "#ff7a93"
+    white = "#FFFFFF"
+    yellow = "#ffd700"
+
+    [colors.normal]
+    black = "#0E1415"
+    blue = "#23297a"
+    cyan = "#20b2aa"
+    green = "#32cd32"
+    magenta = "#8b008b"
+    red = "#f7768e"
+    white = "#FFFFFF"
+    yellow = "#ffd700"
+
+[[keyboard.bindings]]
+	action = "Paste"
+	key = "V"
+	mods = "Control"
+
+[[keyboard.bindings]]
+	action = "Copy"
+	key = "C"
+	mods = "Control"
+
+[[keyboard.bindings]]
+	action = "Quit"
+	key = "C"
+	mods = "Control|Shift"
+
+[window]
+	#decorations = "none"
+	opacity = 0.8
+	title = "Alacritty"
