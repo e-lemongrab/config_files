@@ -1,0 +1,56 @@
+# Alacritty Configuration File
+# Options - https://alacritty.org/config-alacritty.html
+# Themes - https://github.com/alacritty/alacritty-theme
+
+shell:
+  program: /bin/bash # Change this to your preferred shell if needed
+  args:
+  - --login
+
+window:
+  decorations: "none"
+  # Background opacity
+  opacity: 0.8
+
+  # Window title
+  title: "Alacritty"
+
+# Key bindings
+key_bindings:
+- {key: V, mods: Control, action: Paste}
+- {key: C, mods: Control, action: Copy}
+- {key: C, mods: Control|Shift, action: Quit}
+
+custom_cursor_colors: true
+
+schemes:
+  alabaster_dark: &alabaster_dark
+    # Default colors
+    primary:
+      background: '#0E1415'
+      foreground: '#CECECE'
+    cursor:
+      cursor: '#FFFFFF'
+      text: '#FFFFFF'
+    # Normal colors
+    normal:
+      black: '#0E1415'
+      red: '#f7768e'
+      green: '#228b22'
+      yellow: '#ffd700'
+      blue: '#0000FF'
+      magenta: '#8b008b'
+      cyan: '#20b2aa'
+      white: '#FFFFFF'
+
+    # Bright colors
+    bright:
+      black: '#91a3b0'
+      red: '#ff7a93'
+      green: '#228b22'
+      yellow: '#ffd700'
+      blue: '#7da6ff'
+      magenta: '#8b008b'
+      cyan: '#20b2aa'
+      white: '#FFFFFF'
+colors: *alabaster_dark

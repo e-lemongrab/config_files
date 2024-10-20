@@ -1,0 +1,15 @@
+# This file goes in ~
+[user]
+  name = USER_NAME
+  email = EMAIL_ACCOUNT
+[core]
+  autocrlf = false
+  eol = lf
+[push]
+  autoSetupRemote = true
+[color]
+  ui = auto
+[color "branch"]
+	remote = cyan
+	current = green
+	local = yellow
