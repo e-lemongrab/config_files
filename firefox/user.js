@@ -1,264 +1,190 @@
-// This file goes in the root of firefox profile
-user_pref("app.shield.optoutstudies.enabled",	false);
-user_pref("browser.aboutwelcome.didSeeFinalScreen",	true);
-user_pref("browser.bookmarks.addedImportButton",	true);
-user_pref("browser.bookmarks.editDialog.confirmationHintShowCount",	3);
-user_pref("browser.bookmarks.restore_default_bookmarks",	false);
-user_pref("browser.bookmarks.showMobileBookmarks",	false);
-user_pref("browser.compactmode.show",	true);
-user_pref("browser.contentblocking.category",	"strict");
-user_pref("browser.ctrlTab.sortByRecentlyUsed",	true);
-user_pref("browser.download.always_ask_before_handling_new_types",	true);
-user_pref("browser.download.panel.shown",	true);
-user_pref("browser.download.useDownloadDir",	false);
-user_pref("browser.download.viewableInternally.typeWasRegistered.avif",	true);
-user_pref("browser.download.viewableInternally.typeWasRegistered.webp",	true);
-user_pref("browser.firefox-view.feature-tour",	{"screen":"","complete":true});
-user_pref("browser.firefox-view.view-count",	1);
-user_pref("browser.formfill.enable",	false);
-user_pref("browser.laterrun.enabled",	true);
-user_pref("browser.newtab.extensionControlled",	true);
-user_pref("browser.newtab.privateAllowed",	false);
-user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons",	false);
-user_pref("browser.newtabpage.activity-stream.feeds.telemetry",	false);
-user_pref("browser.newtabpage.activity-stream.feeds.topsites",	false);
-user_pref("browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned",	);
-user_pref("browser.newtabpage.activity-stream.showSearch",	false);
-user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites",	false);
-user_pref("browser.newtabpage.activity-stream.telemetry",	false);
+/****************************************************************************
+ * SECTION: GENERAL                                                        *
+****************************************************************************/
+user_pref("content.notify.interval", 100000);
+
+/****************************************************************************
+ * SECTION: GFX                                                            *
+****************************************************************************/
+user_pref("gfx.canvas.accelerated.cache-size", 512);
+user_pref("gfx.content.skia-font-cache-size", 20);
+
+/****************************************************************************
+ * SECTION: DISK CACHE                                                     *
+****************************************************************************/
+user_pref("browser.cache.disk.enable", false);
+
+/****************************************************************************
+ * SECTION: MEDIA CACHE                                                    *
+****************************************************************************/
+user_pref("media.memory_cache_max_size", 65536);
+user_pref("media.cache_readahead_limit", 7200);
+user_pref("media.cache_resume_threshold", 3600);
+
+/****************************************************************************
+ * SECTION: IMAGE CACHE                                                    *
+****************************************************************************/
+user_pref("image.mem.decode_bytes_at_a_time", 32768);
+
+/****************************************************************************
+ * SECTION: NETWORK                                                         *
+****************************************************************************/
+user_pref("network.http.max-connections", 1800);
+user_pref("network.http.max-persistent-connections-per-server", 10);
+user_pref("network.http.max-urgent-start-excessive-connections-per-host", 5);
+user_pref("network.http.pacing.requests.enabled", false);
+user_pref("network.dnsCacheExpiration", 3600);
+user_pref("network.ssl_tokens_cache_capacity", 10240);
+user_pref("network.dns.disablePrefetch", true);
+user_pref("network.dns.disablePrefetchFromHTTPS", true);
+user_pref("network.prefetch-next", false);
+user_pref("network.predictor.enabled", false);
+user_pref("network.predictor.enable-prefetch", false);
+user_pref("network.trr.confirmation_telemetry_enabled", false);
+user_pref("network.trr.custom_uri", "https://dns.mullvad.net/dns-query");
+user_pref("network.trr.mode", 3);
+user_pref("network.trr.uri", "https://dns.mullvad.net/dns-query");
+
+/****************************************************************************
+ * SECTION: FIREFOX CONFIGURATION                                           *
+****************************************************************************/
+user_pref("app.shield.optoutstudies.enabled", false);
+user_pref("browser.aboutwelcome.didSeeFinalScreen", true);
+user_pref("browser.bookmarks.addedImportButton", true);
+user_pref("browser.bookmarks.editDialog.confirmationHintShowCount", 3);
+user_pref("browser.bookmarks.restore_default_bookmarks", false);
+user_pref("browser.bookmarks.showMobileBookmarks", false);
+user_pref("browser.compactmode.show", true);
+user_pref("browser.contentblocking.category", "strict");
+user_pref("browser.ctrlTab.sortByRecentlyUsed", true);
+user_pref("browser.download.always_ask_before_handling_new_types", true);
+user_pref("browser.download.panel.shown", true);
+user_pref("browser.download.useDownloadDir", false);
+user_pref("browser.download.viewableInternally.typeWasRegistered.avif", true);
+user_pref("browser.download.viewableInternally.typeWasRegistered.webp", true);
+user_pref("browser.firefox-view.feature-tour", {"screen":"","complete":true});
+user_pref("browser.firefox-view.view-count", 1);
+user_pref("browser.formfill.enable", false);
+user_pref("browser.laterrun.enabled", true);
+user_pref("browser.newtab.extensionControlled", true);
+user_pref("browser.newtab.privateAllowed", false);
+user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons", false);
+user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
+user_pref("browser.newtabpage.activity-stream.feeds.topsites", false);
+user_pref("browser.newtabpage.activity-stream.showSearch", false);
+user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
+user_pref("browser.newtabpage.activity-stream.telemetry", false);
 user_pref("browser.newtabpage.activity-stream.telemetry.structuredIngestion.endpoint",);
-user_pref("browser.newtabpage.activity-stream.topSitesRows",	2);
-user_pref("browser.newtabpage.pinned",	);
-user_pref("browser.newtabpage.storageVersion",	1);
-user_pref("browser.pageActions.persistedActions",	{"ids":["bookmark","_testpilot-containers"],"idsInUrlbar":["_testpilot-containers","bookmark"],"idsInUrlbarPreProton":[],"version":1});
-user_pref("browser.pagethumbnails.storage_version",	3);
-user_pref("browser.proton.toolbar.version",	3);
-user_pref("browser.safebrowsing.allowOverride",	false);
-user_pref("browser.safebrowsing.blockedURIs.enabled",	false);
-user_pref("browser.safebrowsing.downloads.enabled",	false);
-user_pref("browser.safebrowsing.downloads.remote.block_dangerous",	false);
-user_pref("browser.safebrowsing.downloads.remote.block_dangerous_host",	false);
-user_pref("browser.safebrowsing.downloads.remote.block_potentially_unwanted",	false);
-user_pref("browser.safebrowsing.downloads.remote.block_uncommon	false",);
-user_pref("browser.safebrowsing.downloads.remote.enabled",	false);
-user_pref("browser.safebrowsing.downloads.remote.url",	"https://127.0.0.1");
-user_pref("browser.safebrowsing.malware.enabled",	false);
-user_pref("browser.safebrowsing.phishing.enabled",	false);
-user_pref("browser.safebrowsing.provider.google.advisoryName",	"No Google Safe Browsing");
-user_pref("browser.safebrowsing.provider.google.advisoryURL",	"https://127.0.0.1");
-user_pref("browser.safebrowsing.provider.google.gethashURL",	"https://127.0.0.1");
-user_pref("browser.safebrowsing.provider.google.lists",);
-user_pref("browser.safebrowsing.provider.google.pver",);
-user_pref("browser.safebrowsing.provider.google.reportMalwareMistakeURL",	"https://127.0.0.1");
-user_pref("browser.safebrowsing.provider.google.reportPhishMistakeURL",	"https://127.0.0.1");
-user_pref("browser.safebrowsing.provider.google.reportURL",	"https://127.0.0.1");
-user_pref("browser.safebrowsing.provider.google.updateURL",	"https://127.0.0.1");
-user_pref("browser.safebrowsing.provider.google4.advisoryName",	"No Google Safe Browsing");
-user_pref("browser.safebrowsing.provider.google4.advisoryURL",	"https://127.0.0.1");
-user_pref("browser.safebrowsing.provider.google4.dataSharingURL",	"https://127.0.0.1");
-user_pref("browser.safebrowsing.provider.google4.gethashURL",	"https://127.0.0.1");
-user_pref("browser.safebrowsing.provider.google4.lists",);
-user_pref("browser.safebrowsing.provider.google4.reportMalwareMistakeURL",	"https://127.0.0.1");
-user_pref("browser.safebrowsing.provider.google4.reportPhishMistakeURL",	"https://127.0.0.1");
-user_pref("browser.safebrowsing.provider.google4.reportURL",	"https://127.0.0.1");
-user_pref("browser.safebrowsing.provider.google4.updateURL",	"https://127.0.0.1");
-user_pref("browser.safebrowsing.provider.mozilla.gethashURL",	"https://127.0.0.1");
+user_pref("browser.newtabpage.activity-stream.topSitesRows", 2);
+user_pref("browser.newtabpage.pinned",);
+user_pref("browser.newtabpage.storageVersion", 1);
+user_pref("browser.pageActions.persistedActions", {"ids":["bookmark","_testpilot-containers"],"idsInUrlbar":["_testpilot-containers","bookmark"],"idsInUrlbarPreProton":[],"version":1});
+user_pref("browser.pagethumbnails.storage_version", 3);
+user_pref("browser.proton.toolbar.version", 3);
+user_pref("browser.safebrowsing.allowOverride", false);
+user_pref("browser.safebrowsing.blockedURIs.enabled", false);
+user_pref("browser.safebrowsing.downloads.enabled", false);
+user_pref("browser.safebrowsing.downloads.remote.block_dangerous", false);
+user_pref("browser.safebrowsing.downloads.remote.block_dangerous_host", false);
+user_pref("browser.safebrowsing.downloads.remote.block_potentially_unwanted", false);
+user_pref("browser.safebrowsing.downloads.remote.enabled", false);
+user_pref("browser.safebrowsing.downloads.remote.url", "https://127.0.0.1");
+user_pref("browser.safebrowsing.malware.enabled", false);
+user_pref("browser.safebrowsing.phishing.enabled", false);
+user_pref("browser.safebrowsing.provider.google.advisoryName", "No Google Safe Browsing");
+user_pref("browser.safebrowsing.provider.google.advisoryURL", "https://127.0.0.1");
+user_pref("browser.safebrowsing.provider.google.gethashURL", "https://127.0.0.1");
+user_pref("browser.safebrowsing.provider.google.reportMalwareMistakeURL", "https://127.0.0.1");
+user_pref("browser.safebrowsing.provider.google.reportPhishMistakeURL", "https://127.0.0.1");
+user_pref("browser.safebrowsing.provider.google.reportURL", "https://127.0.0.1");
+user_pref("browser.safebrowsing.provider.google.updateURL", "https://127.0.0.1");
+user_pref("browser.safebrowsing.provider.google4.advisoryName", "No Google Safe Browsing");
+user_pref("browser.safebrowsing.provider.google4.advisoryURL", "https://127.0.0.1");
+user_pref("browser.safebrowsing.provider.google4.dataSharingURL", "https://127.0.0.1");
+user_pref("browser.safebrowsing.provider.google4.gethashURL", "https://127.0.0.1");
+user_pref("browser.safebrowsing.provider.google4.reportMalwareMistakeURL", "https://127.0.0.1");
+user_pref("browser.safebrowsing.provider.google4.reportPhishMistakeURL", "https://127.0.0.1");
+user_pref("browser.safebrowsing.provider.google4.reportURL", "https://127.0.0.1");
+user_pref("browser.safebrowsing.provider.google4.updateURL", "https://127.0.0.1");
+user_pref("browser.safebrowsing.provider.mozilla.gethashURL", "https://127.0.0.1");
 user_pref("browser.safebrowsing.provider.mozilla.lists",);
 user_pref("browser.safebrowsing.provider.mozilla.updateURL",);
-user_pref("browser.safebrowsing.reportPhishURL",	"https://127.0.0.1");
-user_pref("browser.search.suggest.enabled",	false);
-user_pref("browser.search.totalSearches",	23);
-user_pref("browser.shell.didSkipDefaultBrowserCheckOnFirstRun",	true);
-user_pref("browser.startup.couldRestoreSession.count",	1);
-user_pref("browser.startup.homepage",	"moz-extension://3bb8bf24-fff6-4ed7-b91a-430e85954c50/index.html");
-user_pref("browser.startup.homepage_override.extensionControlled",	true);
-user_pref("browser.startup.homepage_override.privateAllowed",	false);
-user_pref("browser.tabs.hoverPreview.showThumbnails",	false);
-user_pref("browser.translations.neverTranslateLanguages",	es);
-user_pref("browser.translations.panelShown",	true);
-user_pref("browser.uiCustomization.state",	{"placements":{"widget-overflow-fixed-list":[],"unified-extensions-area":["_testpilot-containers-browser-action","ublock0_raymondhill_net-browser-action","chrome-gnome-shell_gnome_org-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","urlbar-container","downloads-button","fxa-toolbar-menu-button","unified-extensions-button","_73a6fe31-595d-460b-a920-fcc0f8843232_-browser-action","_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["firefox-view-button","tabbrowser-tabs","new-tab-button","alltabs-button"],"PersonalToolbar":["import-button","personal-bookmarks"]},"seen":["save-to-pocket-button","developer-button","chrome-gnome-shell_gnome_org-browser-action","ublock0_raymondhill_net-browser-action","_testpilot-containers-browser-action","_73a6fe31-595d-460b-a920-fcc0f8843232_-browser-action","_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action"],"dirtyAreaCache":["nav-bar","PersonalToolbar","unified-extensions-area","toolbar-menubar","TabsToolbar"],"currentVersion":20,"newElementCount":3});
-user_pref("browser.uidensity",	1);
-user_pref("browser.urlbar.placeholderName",	"DuckDuckGo");
-user_pref("browser.urlbar.placeholderName.private",	"DuckDuckGo");
-user_pref("browser.urlbar.quicksuggest.migrationVersion",	2);
-user_pref("browser.urlbar.quicksuggest.scenario",	history);
-user_pref("browser.urlbar.showSearchSuggestionsFirst",	false);
-user_pref("browser.urlbar.suggest.engines",	false);
-user_pref("browser.urlbar.suggest.history",	false);
-user_pref("browser.urlbar.suggest.openpage",	false);
-user_pref("browser.urlbar.suggest.searches",	false);
-user_pref("browser.urlbar.suggest.topsites",	false);
-user_pref("datareporting.healthreport.uploadEnabled",	false);
-user_pref("datareporting.policy.dataSubmissionPolicyAcceptedVersion",	2);
-user_pref("datareporting.sessions.current.clean",	true);
-user_pref("devtools.everOpened",	true);
-user_pref("devtools.inspector.simple-highlighters.message-dismissed",	true);
-user_pref("devtools.netmonitor.columnsData",	[{"name":"status","minWidth":30,"width":5.56},{"name":"method","minWidth":30,"width":5.56},{"name":"domain","minWidth":30,"width":11.11},{"name":"file","minWidth":30,"width":27.78},{"name":"url","minWidth":30,"width":25},{"name":"initiator","minWidth":30,"width":11.11},{"name":"type","minWidth":30,"width":5.56},{"name":"transferred","minWidth":30,"width":11.11},{"name":"contentSize","minWidth":30,"width":5.56},{"name":"waterfall","minWidth":150,"width":16.67}]);
-user_pref("devtools.netmonitor.msg.visibleColumns",	["data","time"]);
-user_pref("devtools.toolbox.footer.height",	490);
-user_pref("devtools.toolbox.selectedTool",	"netmonitor");
-user_pref("devtools.toolsidebar-height.inspector",	350);
-user_pref("devtools.toolsidebar-width.inspector",	700);
-user_pref("devtools.toolsidebar-width.inspector.splitsidebar",	350);
-user_pref("distribution.iniFile.exists.value",	true);
-user_pref("distribution.mozilla-deb.bookmarksProcessed",	true);
-user_pref("doh-rollout.disable-heuristics",	true);
-user_pref("doh-rollout.doneFirstRun",	true);
-user_pref("doh-rollout.home-region",	ES);
-user_pref("dom.forms.autocomplete.formautofill",	true);
-user_pref("dom.security.https_only_mode",	true);
-user_pref("dom.security.https_only_mode_ever_enabled",	true);
-user_pref("dom.security.unexpected_system_load_telemetry_enabled",	false);
-user_pref("extensions.activeThemeID",	"default-theme@mozilla.org");
-user_pref("extensions.blocklist.pingCountVersion",	0);
-user_pref("extensions.databaseSchema",	36);
-user_pref("extensions.formautofill.creditCards.enabled",	false);
-user_pref("extensions.getAddons.databaseSchema",	6);
-user_pref("extensions.pendingOperations",	false);
-user_pref("extensions.pictureinpicture.enable_picture_in_picture_overrides",	true);
-user_pref("extensions.quarantinedDomains.list",	"autoatendimento.bb.com.br,ibpf.sicredi.com.br,ibpj.sicredi.com.br,internetbanking.caixa.gov.br,www.ib12.bradesco.com.br,www2.bancobrasil.com.br");
-user_pref("extensions.ui.dictionary.hidden",	true);
-user_pref("extensions.ui.lastCategory",	"addons://list/extension");
-user_pref("extensions.ui.locale.hidden",	true);
-user_pref("extensions.ui.sitepermission.hidden",	true);
-user_pref("extensions.webcompat.enable_shims",	true);
-user_pref("extensions.webcompat.perform_injections",	true);
-user_pref("extensions.webcompat.perform_ua_overrides",	true);
-user_pref("gecko.handlerService.defaultHandlersVersion",	1);
-user_pref("identity.fxaccounts.telemetry.clientAssociationPing.enabled",	false);
-user_pref("layout.css.prefers-color-scheme.content-override",	0);
-user_pref("media.autoplay.default",	5);
-user_pref("media.eme.enabled",	true);
-user_pref("media.gmp.storage.version.observed",	1);
-user_pref("media.videocontrols.picture-in-picture.video-toggle.enabled",	false);
-user_pref("messaging-system-action.showEmbeddedImport",	true);
-user_pref("network.dns.disablePrefetch",	true);
-user_pref("network.http.referer.disallowCrossSiteRelaxingDefault.top_navigation",	true);
-user_pref("network.http.speculative-parallel-limit",	0);
-user_pref("network.predictor.enabled",	false);
-user_pref("network.prefetch-next",	false);
-user_pref("network.trr.confirmation_telemetry_enabled",	false);
-user_pref("network.trr.custom_uri",	"https://dns.mullvad.net/dns-query");
-user_pref("network.trr.mode",	3);
-user_pref("network.trr.uri",	"https://dns.mullvad.net/dns-query");
-user_pref("pdfjs.enabledCache.state",	true);
-user_pref("pdfjs.migrationVersion",	2);
-user_pref("permissions.default.camera",	2);
-user_pref("permissions.default.desktop-notification",	2);
-user_pref("permissions.default.geo",	2);
-user_pref("permissions.default.microphone",	2);
-user_pref("places.history.enabled",	false);
-user_pref("pref.downloads.disable_button.edit_actions",	false);
-user_pref("pref.privacy.disable_button.cookie_exceptions",	false);
-user_pref("privacy.annotate_channels.strict_list.enabled",	true);
-user_pref("privacy.bounceTrackingProtection.hasMigratedUserActivationData",	true);
-user_pref("privacy.clearOnShutdown.cookies",	false);
-user_pref("privacy.clearOnShutdown.offlineApps",	true);
-user_pref("privacy.clearOnShutdown.sessions",	false);
-user_pref("privacy.clearOnShutdown.siteSettings",	true);
-user_pref("privacy.clearOnShutdown_v2.siteSettings",	true);
-user_pref("privacy.donottrackheader.enabled",	true);
-user_pref("privacy.fingerprintingProtection",	true);
-user_pref("privacy.globalprivacycontrol.enabled",	true);
-user_pref("privacy.globalprivacycontrol.was_ever_enabled",	true);
-user_pref("privacy.history.custom",	true);
-user_pref("privacy.purge_trackers.date_in_cookie_database",	0);
-user_pref("privacy.query_stripping.enabled",	true);
-user_pref("privacy.query_stripping.enabled.pbmode",	true);
-user_pref("privacy.sanitize.clearOnShutdown.hasMigratedToNewPrefs2",	true);
-user_pref("privacy.sanitize.pending	"[{"id":"shutdown","itemsToClear":["cache","siteSettings","historyFormDataAndDownloads","cookiesAndStorage"],"options":{}},{"id":"newtab-container","itemsToClear":[],"options":{}}]);
-user_pref("privacy.sanitize.sanitizeOnShutdown",	true);
-user_pref("privacy.trackingprotection.emailtracking.enabled",	true);
-user_pref("privacy.trackingprotection.enabled",	true);
-user_pref("privacy.trackingprotection.socialtracking.enabled",	true);
-user_pref("privacy.userContext.enabled",	true);
-user_pref("privacy.userContext.extension",	"@testpilot-containers");
-user_pref("privacy.userContext.newTabContainerOnLeftClick.enabled",	true);
-user_pref("privacy.userContext.ui.enabled",	true);
-user_pref("security.app_menu.recordEventTelemetry",	false);
-user_pref("security.certerrors.recordEventTelemetry",	false);
-user_pref("security.protectionspopup.recordEventTelemetry",	false);
-user_pref("services.settings.clock_skew_seconds",	7);
-user_pref("services.sync.engine.history",	false);
-user_pref("services.sync.engine.passwords",	false);
-user_pref("services.sync.engine.prefs.modified",	false);
-user_pref("services.sync.engine.tabs",	false);
-user_pref("services.sync.forms.lastSync",	0);
-user_pref("services.sync.globalScore",	0);
-user_pref("services.sync.prefs.sync-seen.app.shield.optoutstudies.enabled",	true);
-user_pref("services.sync.prefs.sync-seen.browser.contentblocking.category",	true);
-user_pref("services.sync.prefs.sync-seen.browser.ctrlTab.sortByRecentlyUsed",	true);
-user_pref("services.sync.prefs.sync-seen.browser.download.useDownloadDir",	true);
-user_pref("services.sync.prefs.sync-seen.browser.firefox-view.feature-tour",	true);
-user_pref("services.sync.prefs.sync-seen.browser.formfill.enable",	true);
-user_pref("services.sync.prefs.sync-seen.browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons",	true);
-user_pref("services.sync.prefs.sync-seen.browser.newtabpage.activity-stream.feeds.topsites",	true);
-user_pref("services.sync.prefs.sync-seen.browser.newtabpage.activity-stream.section.highlights.includePocket",	true);
-user_pref("services.sync.prefs.sync-seen.browser.newtabpage.activity-stream.showSearch",	true);
-user_pref("services.sync.prefs.sync-seen.browser.newtabpage.activity-stream.showSponsoredTopSites",	true);
-user_pref("services.sync.prefs.sync-seen.browser.newtabpage.activity-stream.topSitesRows",	true);
-user_pref("services.sync.prefs.sync-seen.browser.newtabpage.pinned",	false);
-user_pref("services.sync.prefs.sync-seen.browser.safebrowsing.downloads.enabled",	false);
-user_pref("services.sync.prefs.sync-seen.browser.safebrowsing.downloads.remote.block_potentially_unwanted",	false);
-user_pref("services.sync.prefs.sync-seen.browser.safebrowsing.malware.enabled",	false);
-user_pref("services.sync.prefs.sync-seen.browser.safebrowsing.phishing.enabled",	false);
-user_pref("services.sync.prefs.sync-seen.browser.urlbar.showSearchSuggestionsFirst",	true);
-user_pref("services.sync.prefs.sync-seen.browser.urlbar.suggest.engines",	true);
-user_pref("services.sync.prefs.sync-seen.browser.urlbar.suggest.history",	true);
-user_pref("services.sync.prefs.sync-seen.browser.urlbar.suggest.openpage",	true);
-user_pref("services.sync.prefs.sync-seen.browser.urlbar.suggest.searches",	true);
-user_pref("services.sync.prefs.sync-seen.browser.urlbar.suggest.topsites",	true);
-user_pref("services.sync.prefs.sync-seen.dom.security.https_only_mode",	true);
-user_pref("services.sync.prefs.sync-seen.dom.security.https_only_mode_ever_enabled",	true);
-user_pref("services.sync.prefs.sync-seen.extensions.activeThemeID",	true);
-user_pref("services.sync.prefs.sync-seen.general.autoScroll",	true);
-user_pref("services.sync.prefs.sync-seen.media.autoplay.default",	true);
-user_pref("services.sync.prefs.sync-seen.media.eme.enabled",	true);
-user_pref("services.sync.prefs.sync-seen.media.videocontrols.picture-in-picture.video-toggle.enabled",	true);
-user_pref("services.sync.prefs.sync-seen.pref.downloads.disable_button.edit_actions",	true);
-user_pref("services.sync.prefs.sync-seen.pref.privacy.disable_button.cookie_exceptions",	true);
-user_pref("services.sync.prefs.sync-seen.privacy.clearOnShutdown.cookies",	true);
-user_pref("services.sync.prefs.sync-seen.privacy.clearOnShutdown.offlineApps",	true);
-user_pref("services.sync.prefs.sync-seen.privacy.clearOnShutdown.sessions",	true);
-user_pref("services.sync.prefs.sync-seen.privacy.clearOnShutdown.siteSettings",	true);
-user_pref("services.sync.prefs.sync-seen.privacy.clearOnShutdown_v2.cookiesAndStorage",	true);
-user_pref("services.sync.prefs.sync-seen.privacy.clearOnShutdown_v2.siteSettings",	true);
-user_pref("services.sync.prefs.sync-seen.privacy.donottrackheader.enabled",	true);
-user_pref("services.sync.prefs.sync-seen.privacy.globalprivacycontrol.enabled",	true);
-user_pref("services.sync.prefs.sync-seen.privacy.sanitize.sanitizeOnShutdown",	true);
-user_pref("services.sync.prefs.sync-seen.privacy.trackingprotection.enabled",	true);
-user_pref("services.sync.prefs.sync-seen.privacy.userContext.enabled",	true);
-user_pref("services.sync.prefs.sync-seen.privacy.userContext.newTabContainerOnLeftClick.enabled",	true);
-user_pref("services.sync.prefs.sync-seen.services.sync.prefs.sync.browser.safebrowsing.downloads.enabled",	false);
-user_pref("services.sync.prefs.sync-seen.services.sync.prefs.sync.browser.safebrowsing.downloads.remote.block_potentially_unwanted",	false);
-user_pref("services.sync.prefs.sync-seen.services.sync.prefs.sync.browser.safebrowsing.malware.enabled",	false);
-user_pref("services.sync.prefs.sync-seen.services.sync.prefs.sync.browser.safebrowsing.phishing.enabled",	false);
-user_pref("services.sync.prefs.sync-seen.signon.rememberSignons",	true);
-user_pref("services.sync.prefs.sync.browser.safebrowsing.downloads.enabled",	false);
-user_pref("services.sync.prefs.sync.browser.safebrowsing.downloads.remote.block_potentially_unwanted",	false);
-user_pref("services.sync.prefs.sync.browser.safebrowsing.malware.enabled",	false);
-user_pref("services.sync.prefs.sync.browser.safebrowsing.phishing.enabled",	false);
-user_pref("signon.rememberSignons",	false);
-user_pref("storage.vacuum.last.index",	0);
-user_pref("toolkit.telemetry.archive.enabled",	false);
-user_pref("toolkit.telemetry.bhrPing.enabled",	false);
-user_pref("toolkit.telemetry.dap.helper.url",);
-user_pref("toolkit.telemetry.dap.leader.url",);
-user_pref("toolkit.telemetry.firstShutdownPing.enabled",	false);
-user_pref("toolkit.telemetry.newProfilePing.enabled",	false);
-user_pref("toolkit.telemetry.pioneer-new-studies-available",	false);
-user_pref("toolkit.telemetry.rejected",	true);
-user_pref("toolkit.telemetry.reportingpolicy.firstRun",	false);
-user_pref("toolkit.telemetry.server",);
-user_pref("toolkit.telemetry.shutdownPingSender.enabled",	false);
-user_pref("toolkit.telemetry.translations.logLevel",);
-user_pref("toolkit.telemetry.unified",	false);
-user_pref("toolkit.telemetry.unifiedIsOptIn",	false);
-user_pref("toolkit.telemetry.updatePing.enabled",	false);
-user_pref("trailhead.firstrun.didSeeAboutWelcome",	true);
-user_pref("widget.gtk.overlay-scrollbars.enabled",	false);
-user_pref("devtools.onboarding.telemetry.logged",   false);
-user_pref("browser.ping-centre.telemetry",  false);
-user_pref("toolkit.telemetry.enabled",  false);
-user_pref("toolkit.telemetry.hybridContent.enabled",    false);
-user_pref("datareporting.policy.dataSubmissionEnabled", false);
+user_pref("browser.safebrowsing.reportPhishURL", "https://127.0.0.1");
+
+/****************************************************************************
+ * SECTION: SEARCH CONFIGURATION                                            *
+****************************************************************************/
+user_pref("browser.search.suggest.enabled", false);
+user_pref("browser.search.totalSearches", 23);
+user_pref("browser.urlbar.placeholderName", "DuckDuckGo");
+user_pref("browser.urlbar.placeholderName.private", "DuckDuckGo");
+user_pref("browser.urlbar.quicksuggest.migrationVersion", 2);
+user_pref("browser.urlbar.quicksuggest.scenario", history);
+user_pref("browser.urlbar.showSearchSuggestionsFirst", false);
+user_pref("browser.urlbar.suggest.engines", false);
+user_pref("browser.urlbar.suggest.history", false);
+user_pref("browser.urlbar.suggest.openpage", false);
+user_pref("browser.urlbar.suggest.searches", false);
+user_pref("browser.urlbar.suggest.topsites", false);
+
+/****************************************************************************
+ * SECTION: PRIVACY CONFIGURATION                                           *
+****************************************************************************/
+user_pref("privacy.annotate_channels.strict_list.enabled", true);
+user_pref("privacy.clearOnShutdown.cookies", false);
+user_pref("privacy.clearOnShutdown.offlineApps", true);
+user_pref("privacy.clearOnShutdown.sessions", false);
+user_pref("privacy.clearOnShutdown.siteSettings", true);
+user_pref("privacy.clearOnShutdown_v2.siteSettings", true);
+user_pref("privacy.donottrackheader.enabled", true);
+user_pref("privacy.fingerprintingProtection", true);
+user_pref("privacy.globalprivacycontrol.enabled", true);
+user_pref("privacy.globalprivacycontrol.was_ever_enabled", true);
+user_pref("privacy.history.custom", true);
+user_pref("privacy.query_stripping.enabled", true);
+user_pref("privacy.query_stripping.enabled.pbmode", true);
+user_pref("privacy.sanitize.sanitizeOnShutdown", true);
+user_pref("privacy.trackingprotection.emailtracking.enabled", true);
+user_pref("privacy.trackingprotection.enabled", true);
+user_pref("privacy.trackingprotection.socialtracking.enabled", true);
+user_pref("privacy.userContext.enabled", true);
+user_pref("privacy.userContext.extension", "@testpilot-containers");
+user_pref("privacy.userContext.newTabContainerOnLeftClick.enabled", true);
+user_pref("privacy.userContext.ui.enabled", true);
+
+/****************************************************************************
+ * SECTION: SECURITY                                                        *
+****************************************************************************/
+user_pref("security.app_menu.recordEventTelemetry", false);
+user_pref("security.certerrors.recordEventTelemetry", false);
+user_pref("security.protectionspopup.recordEventTelemetry", false);
+
+/****************************************************************************
+ * SECTION: SERVICES                                                        *
+****************************************************************************/
+user_pref("services.settings.clock_skew_seconds", 7);
+user_pref("services.sync.engine.history", false);
+user_pref("services.sync.engine.passwords", false);
+user_pref("services.sync.engine.prefs.modified", false);
+user_pref("services.sync.engine.tabs", false);
+user_pref("services.sync.forms.lastSync", 0);
+user_pref("services.sync.globalScore", 0);
+
+/****************************************************************************
+ * SECTION: TELEMETRY & DATA COLLECTION                                      *
+****************************************************************************/
+user_pref("toolkit.telemetry.archive.enabled", false);
+user_pref("toolkit.telemetry.bhrPing.enabled", false);
+user_pref("toolkit.telemetry.firstShutdownPing.enabled", false);
+user_pref("toolkit.telemetry.newProfilePing.enabled", false);
+user_pref("toolkit.telemetry.pioneer-new-studies-available", false);
+user_pref("toolkit.telemetry.rejected", true);
+user_pref("toolkit.telemetry.reportingpolicy.firstRun", false);
+user_pref("toolkit.telemetry.shutdownPingSender.enabled", false);
+user_pref("toolkit.telemetry.unified", false);
+user_pref("toolkit.telemetry.unifiedIsOptIn", false);
+user_pref("toolkit.telemetry.updatePing.enabled", false);
+user_pref("toolkit.telemetry.enabled", false);
+user_pref("toolkit.telemetry.info", false);
+user_pref("toolkit.telemetry.os", false);
+user_pref("toolkit.telemetry.sync.enabled", false);

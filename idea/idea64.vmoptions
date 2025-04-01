@@ -1,0 +1,83 @@
+-server
+-ea
+
+##################
+# Memory Settings
+##################
+# Set the initial heap size (8GB) and maximum heap size (16GB)
+-Xms8G
+-Xmx16G
+
+##################
+# Garbage Collection (Lightweight)
+##################
+# Use G1 Garbage Collector (Optimized for performance)
+-XX:+UseG1GC
+
+# Disable old collectors (CMS/ParNew) for better consistency with G1
+-XX:-UseParNewGC
+-XX:-UseConcMarkSweepGC
+
+# Set parallel GC threads to 4 (to take advantage of multi-core CPUs)
+-XX:ParallelGCThreads=4
+
+# Maximize CPU efficiency by minimizing GC pauses
+-XX:MaxGCPauseMillis=100
+
+##################
+# Metaspace and Code Cache
+##################
+# Set the Reserved Code Cache Size
+-XX:ReservedCodeCacheSize=512m
+
+# Limit Metaspace size (to avoid excessive memory use)
+-XX:MaxMetaspaceSize=1G
+-XX:MetaspaceSize=512m
+
+##################
+# Performance Tuning (For Basic Usage)
+##################
+# Set Stack Size per thread to 2MB (this is the default but included for clarity)
+-Xss2m
+
+# Use compressed object pointers for 64-bit systems (saves memory and improves CPU performance)
+-XX:+UseCompressedOops
+
+# Enable escape analysis for better performance in the JVM
+-XX:+DoEscapeAnalysis
+
+##################
+# System Tweaks
+##################
+# Disable Canonicalize IO (speeds up IO operations)
+-Dsun.io.useCanonCaches=false
+
+# Force usage of IPv4 over IPv6 to avoid potential issues (especially in Docker environments)
+-Djava.net.preferIPv4Stack=true
+
+# Use Marlin Rendering Engine (faster graphics rendering)
+-Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine
+
+##################
+# Disable Features You Don’t Need
+##################
+# Disable Explicit Garbage Collection calls to save CPU cycles
+-XX:+DisableExplicitGC
+
+# Allow concurrent garbage collection to improve responsiveness
+-XX:+ExplicitGCInvokesConcurrent
+
+# Disable bytecode verification to speed up startup and reduce CPU load
+-Xverify:none
+
+##################
+# Debugging/Logging (Optional but useful for diagnostics)
+##################
+# Print detailed GC logs (useful if you want to analyze GC behavior)
+-XX:+PrintGCDetails
+
+# Print final flags (useful for diagnostics)
+-XX:+PrintFlagsFinal
+
+# Enable heap dump on OOM (to aid debugging if needed)
+-XX:+HeapDumpOnOutOfMemoryError
