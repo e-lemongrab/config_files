@@ -1,0 +1,9 @@
+# This file goes in the user home directory of windows OS
+[wsl2]
+processors=2
+memory=8GB
+swap=50GB
+swapFile=D:\\WSL2\\Arch\\swap.vhdx
+# Turn on default connection to bind WSL 2 localhost to Windows localhost
+localhostforwarding=true
+# kernel=D:\\WSL\\kernel\\kernel-6-6-36-6
