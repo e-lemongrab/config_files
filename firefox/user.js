@@ -147,8 +147,7 @@ user_pref("privacy.sanitize.sanitizeOnShutdown", true);
 user_pref("privacy.trackingprotection.emailtracking.enabled", true);
 user_pref("privacy.trackingprotection.enabled", true);
 user_pref("privacy.trackingprotection.socialtracking.enabled", true);
-user_pref("privacy.userContext.enabled", true);
-user_pref("privacy.userContext.extension", "@testpilot-containers");
+user_pref("privacy.userContext.enabled", false);
 user_pref("privacy.userContext.newTabContainerOnLeftClick.enabled", true);
 user_pref("privacy.userContext.ui.enabled", true);
 
@@ -156,9 +155,59 @@ user_pref("privacy.userContext.ui.enabled", true);
  * SECTION: SECURITY                                                        *
 ****************************************************************************/
 user_pref("security.app_menu.recordEventTelemetry", false);
-user_pref("security.certerrors.recordEventTelemetry", false);
-user_pref("security.protectionspopup.recordEventTelemetry", false);
+// Disable third-party cookies (only first-party cookies allowed)
+user_pref("network.cookie.cookieBehavior", 1);
 
+// Enable Tracking Protection (TP) to block known trackers
+user_pref("privacy.trackingprotection.enabled", true);
+
+// Resist fingerprinting (limits device/browser information leakage)
+user_pref("privacy.resistFingerprinting", true);
+
+// Disable geolocation requests
+user_pref("geo.enabled", false);
+
+// Disable WebAssembly SIMD feature (for potential security reasons)
+user_pref("javascript.options.wasm.simd", false);
+
+// Disable auto-play of media (videos, audio, etc.)
+user_pref("media.autoplay.default", 1);
+
+// Enable Enhanced Tracking Protection (ETP) in Private Browsing Mode
+user_pref("privacy.trackingprotection.pbmode.enabled", true);
+
+// Block social media widgets (e.g., Facebook, Twitter) from tracking you across sites
+user_pref("privacy.socialtracking.block", true);
+
+// Disable access to clipboard for websites
+user_pref("dom.allow_cut_copy", false);
+
+// Disable Telemetry (no data sent to Mozilla)
+user_pref("datareporting.healthreport.uploadEnabled", false);
+user_pref("toolkit.telemetry.enabled", false);
+user_pref("toolkit.telemetry.unified", false);
+// Disable DNS prefetching to prevent potential leaks
+user_pref("network.dns.disablePrefetch", true);
+// Enable HTTPS-Only Mode (forces HTTPS for all connections)
+user_pref("dom.security.https_only_mode", true);
+// Block WebRTC leaks (prevent IP address leaks via WebRTC)
+user_pref("media.peerconnection.enabled", false);
+// Disable access to WebRTC media devices (camera and microphone)
+user_pref("media.navigator.permission.disabled", true);
+// Disable automatic recording of events related to certificate errors
+user_pref("security.certerrors.recordEventTelemetry", false);
+// Disable automatic event recording for protection popups
+user_pref("security.protectionspopup.recordEventTelemetry", false);
+// Block remote audio recording (WebAudio API)
+user_pref("media.navigator.streams.fake", true);
+// Disable WebSockets API to prevent persistent connections
+user_pref("network.websocket.enabled", false);
+// Disable screen capture (prevent websites from accessing your screen)
+user_pref("media.getusermedia.screensharing.enabled", false);
+// Block all media stream access (camera, microphone, screen)
+user_pref("media.navigator.permission.disabled", true);
+// Disable capturing from canvas and video elements (track mouse movements)
+user_pref("media.capture.mouse", false);
 /****************************************************************************
  * SECTION: SERVICES                                                        *
 ****************************************************************************/
