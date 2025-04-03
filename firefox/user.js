@@ -8,6 +8,8 @@ user_pref("content.notify.interval", 100000);
 ****************************************************************************/
 user_pref("gfx.canvas.accelerated.cache-size", 512);
 user_pref("gfx.content.skia-font-cache-size", 20);
+user_pref("browser.tabs.hoverPreview.enabled", false);
+user_pref("browser.tabs.hoverPreview.showThumbnails", false);
 
 /****************************************************************************
  * SECTION: DISK CACHE                                                     *
