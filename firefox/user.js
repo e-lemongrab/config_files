@@ -112,6 +112,8 @@ user_pref("browser.safebrowsing.provider.mozilla.gethashURL", "https://127.0.0.1
 user_pref("browser.safebrowsing.provider.mozilla.lists",);
 user_pref("browser.safebrowsing.provider.mozilla.updateURL",);
 user_pref("browser.safebrowsing.reportPhishURL", "https://127.0.0.1");
+user_pref("browser.sidebar.position", "right");
+user_pref("browser.sidebar.visible", true);
 
 /****************************************************************************
  * SECTION: SEARCH CONFIGURATION                                            *

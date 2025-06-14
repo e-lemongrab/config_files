@@ -1,6 +1,12 @@
 -server
 -ea
 
+####################
+# Window autoscaler
+####################
+
+-Dsun.java2d.uiScale=1
+
 ##################
 # Memory Settings
 ##################
