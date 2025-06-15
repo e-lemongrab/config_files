@@ -1,86 +1,51 @@
-#!/usr/bin/env julia
-# This goes in ~
-# /etc/inputrc - global inputrc for libreadline
-# See readline(3readline) and `info rluserman' for more information.
+# ~/.inputrc - User-specific readline configuration
+# This file goes in $HOME
 
-# Reload inputrc
-# bind -f ~/.inputrc
+## ----- General Settings -----
 
-# List bindings
-# bind -P
-
-# do not bell on tab-completion
+# Don't beep on tab-completion
 set bell-style none
 
-#disable case sensitivity only in Bash
+# Case-insensitive tab completion
 set completion-ignore-case on
-#Easy TAB for directories
-TAB: menu-complete
+
+# Show all options immediately if multiple matches
 set show-all-if-ambiguous on
 
-#Allow search in history
-"\e[A": history-search-backward # Bind Up Arrow
-"\e[B": history-search-forward # Bind Down Arrow
+## ----- Tab Completion Cycling -----
 
-# Delete key
-"\e[3~": delete-char
+# Tab to cycle forward through completions
+"\t": menu-complete
 
-# Copy the selected text or command (Ctrl + C)
-"\C-c": copy
+# Shift+Tab to cycle backward (if terminal supports it)
+"\e[Z": menu-complete-backward
 
-# Paste copied text or command (Ctrl + V)
-"\C-v": paste
+## ----- Command History Search (Arrow Keys) -----
 
-# Stop the current process/command (Ctrl + Shift + C)
-#"\e[19;5~": interrupt
-"\C-x": interrupt
+# Arrow up/down search history by current input prefix
+"\e[A": history-search-backward
+"\e[B": history-search-forward
 
-# Default
+## ----- Navigation -----
 
-# Move to the start of the line (Ctrl + A)
-"\C-a": beginning-of-line
+"\C-a": beginning-of-line         # Ctrl+A → Start of line
+"\C-e": end-of-line               # Ctrl+E → End of line
+"\C-u": backward-kill-line        # Ctrl+U → Delete to beginning of line
+"\C-k": kill-line                 # Ctrl+K → Delete to end of line
+"\C-w": backward-kill-word        # Ctrl+W → Delete word before cursor
+"\C-l": clear-screen              # Ctrl+L → Clear terminal
 
-# Move to the end of the line (Ctrl + E)
-"\C-e": end-of-line
+## ----- Editing and Control -----
 
-# Delete from the cursor to the start of the line (Ctrl + U)
-"\C-u": backward-kill-line
+"\C-d": logout                    # Ctrl+D → Exit shell
+"\C-z": suspend                   # Ctrl+Z → Suspend process
+"\C-r": reverse-search-history    # Ctrl+R → Reverse history search
+"\C-x": interrupt                 # Ctrl+X → Interrupt current input
+"\e[3~": delete-char              # Delete key → Delete character under cursor
 
-# Delete from the cursor to the end of the line (Ctrl + K)
-"\C-k": kill-line
+## ----- Optional: Custom History Shortcuts -----
 
-# Delete the word before the cursor (Ctrl + W)
-"\C-w": backward-kill-word
-
-# Clear the terminal screen (Ctrl + L)
-"\C-l": clear-screen
-
-# Log out or exit the terminal (Ctrl + D)
-"\C-d": logout
-
-# Pause the current process (can be resumed) (Ctrl + Z)
-"\C-z": suspend
-
-# Search command history (backward search) (Ctrl + R)
-"\C-r": reverse-search-history
-
-# Repeat the last command (!!)
+# These two are mostly symbolic and not interactive
+# You likely don't need them unless you rely on `!!` or `!n` directly
 "!!": previous-history
-
-# Repeat the nth command from history (!n)
 "!n": history-search-backward
-
-# Auto-complete commands, files, or directories (Tab)
-"\t": complete
-
-# List all possible completions (Tab twice)
-"\t\t": list-completions
-
-# Open a new terminal window (Ctrl + Shift + N)
-"\e[19;5~": new-terminal-window
-
-# Open a new tab in the terminal (Ctrl + Shift + T)
-"\e[19;6~": new-terminal-tab
-
-# Switch between terminal tabs (Ctrl + Tab or Ctrl + PageDown)
-"\e[19;5~": switch-tabs
