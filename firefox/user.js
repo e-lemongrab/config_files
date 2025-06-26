@@ -184,7 +184,7 @@ user_pref("privacy.trackingprotection.pbmode.enabled", true);
 user_pref("privacy.socialtracking.block", true);
 
 // Disable access to clipboard for websites
-user_pref("dom.allow_cut_copy", false);
+// user_pref("dom.allow_cut_copy", false);
 
 // Disable Telemetry (no data sent to Mozilla)
 user_pref("datareporting.healthreport.uploadEnabled", false);
