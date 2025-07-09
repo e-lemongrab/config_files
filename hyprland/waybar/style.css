@@ -1,0 +1,94 @@
+/*  ~/.config/waybar/style.css */
+* {
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+window#waybar {
+    background-color: transparent;
+}
+
+.modules-left,
+.modules-right,
+.modules-center {
+    padding: 3px;
+}
+
+/* Clock */
+#clock {
+    background-color: #1e1e2e;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 8px 10px 10px 10px;
+    margin: 4px 0;
+}
+
+/* Volume */
+#pulseaudio {
+    background-color: #1e1e2e;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 4px 0;
+}
+#pulseaudio.muted {
+    color: #f38ba8;
+}
+
+/* Network Icon (WiFi/Ethernet) */
+#network,
+#network.disabled {
+    background-color: #f8f8f8;
+    color: #1e1e2e;
+    border-radius: 4px;
+    padding: 8px 10px 10px 10px;
+    margin: 4px 0;
+}
+
+/* Tray */
+#tray {
+    background-color: #1e1e2e;
+    border-radius: 20px;
+    padding: 8px 12px;
+    margin: 4px 0;
+}
+
+/* CPU */
+#cpu {
+    background-color: #cdd6f4;
+    color: #f2cdcd;
+    border-radius: 4px;
+    padding: 8px 8px 8px 20px;
+    margin: 4px 0;
+}
+
+/* Memory */
+#memory {
+    background-color: #cdd6f4;
+    color: #fab387;
+    border-radius: 4px;
+    padding: 8px 8px 8px 20px;
+    margin: 4px 0;
+}
+
+/* Custom Hardware */
+#custom-hardware {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    border-radius: 4px;
+    padding: 4px 12px;
+    margin: 4px 0;
+}
+
+/* Custom Bandwidth */
+#custom-network_bandwidth {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 4px 0;
+}
+
+
+
