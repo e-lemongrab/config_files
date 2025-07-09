@@ -1,0 +1,1 @@
+sudo pacman -S waybar ttf-jetbrains-mono-nerd bc lm_sensors
