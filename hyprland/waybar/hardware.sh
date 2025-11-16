@@ -17,4 +17,4 @@ cpu_usage=$(top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8}' | cut -d'.' -f1)
 mem_used=$(free -m | awk '/^Mem:/ {printf "%.1f", $3/1024}')
 mem_total=$(free -m | awk '/^Mem:/ {printf "%.1f", $2/1024}')
 
-echo " GPU: ${gpu_temp}°C |   Fan: ${fan_speed} %  |  CPU: ${cpu_temp}°C  CPU: ${cpu_usage}% |  RAM: ${mem_used}G/${mem_total}GB |"
+echo " GPU: ${gpu_temp}°C   Fan: ${fan_speed} %  |  CPU: ${cpu_temp}°C  CPU: ${cpu_usage}% |  RAM: ${mem_used}G/${mem_total}GB |"

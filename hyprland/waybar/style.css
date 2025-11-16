@@ -90,5 +90,43 @@ window#waybar {
     margin: 4px 0;
 }
 
+/* Power Buttons */
+#custom-logout {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 4px 0;
+}
+
+#custom-logout:hover {
+    background-color: #f38ba8;
+    color: #1e1e2e;
+    transition: 0.1s ease;
+}
+
+#custom-reboot,
+#custom-poweroff {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 4px 0;
+}
+
+#custom-reboot:hover,
+#custom-poweroff:hover {
+    background-color: #f38ba8;
+    color: #1e1e2e;
+    transition: 0.1s ease;
+}
 
 
+/* Audio Switch */
+#custom-audio_switch {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 4px 0;
+}
