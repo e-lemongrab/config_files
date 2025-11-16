@@ -10,19 +10,47 @@
   ],
   "modules-center": [],
   "modules-right": [
+    "custom/logout",
+    "custom/reboot",
+    "custom/poweroff",
     "clock",
+    "custom/audio_switch",
     "pulseaudio",
     "tray"
   ],
+
+  "custom/logout": {
+      "format": "",
+      "tooltip": "Logout",
+      "on-click": "hyprctl dispatch exit",
+  },
+
+  "custom/reboot": {
+    "format": "",
+    "tooltip": "Reboot",
+    "on-click": "systemctl reboot"
+  },
+  
+  "custom/poweroff": {
+    "format": "",
+    "tooltip": "Power Off",
+    "on-click": "systemctl poweroff"
+  },
 
   "clock": {
     "format": "  {:%d-%m-%Y %H:%M}",
     "tooltip-format": "{:%A, %B %d, %Y}"
   },
 
+  "custom/audio_switch": {
+    "format": "",
+    "tooltip": "Select audio output",
+    "on-click": "~/.config/waybar/audio_switch.sh",
+  },
+
   "pulseaudio": {
     "format": " {volume}%",
-    "format-muted": " muted",
+    "format-muted": "muted",
     "on-click": "pavucontrol"
   },
 
