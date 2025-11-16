@@ -1,0 +1,25 @@
+window {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    font-family: "Sans";
+    font-size: 14px;
+}
+
+#input {
+    margin: 5px;
+    border-radius: 5px;
+    padding: 4px;
+    background-color: #313244;
+    color: #cdd6f4;
+}
+
+#entry {
+    padding: 4px;
+    margin: 2px;
+    border-radius: 4px;
+}
+
+#entry:selected {
+    background-color: #89b4fa; /* light blue */
+    color: #1e1e2e;            /* dark text for contrast */
+}
