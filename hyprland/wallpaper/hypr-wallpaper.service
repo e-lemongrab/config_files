@@ -1,0 +1,13 @@
+[Unit]
+Description=Hyprland Wallpaper Rotation Script
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStartPre=/bin/sleep 10
+ExecStart=/home/username/.config/hypr/wallpaper-rotation.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
