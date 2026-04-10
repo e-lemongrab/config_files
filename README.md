@@ -1,3 +1,46 @@
 # Config_files
 
 Public repo for configuration files.
+
+## Firefox `user.js`
+
+This Firefox profile keeps `network.cookie.cookieBehavior = 1` for day-to-day compatibility.
+
+It is intended to be used together with:
+- NoScript
+- Firefox Multi-Account Containers
+- the anti-fingerprinting and partitioning settings already enabled in `firefox/user.js`
+
+In this setup, privacy hardening does not rely on stricter cookie blocking alone, but on the combination of:
+- `privacy.resistFingerprinting`
+- `privacy.fingerprintingProtection`
+- Firefox internal partitioning / isolation preferences
+- container-based separation
+
+### Notes on breakage / expected behavior
+
+The profile intentionally blocks or restricts several browser capabilities.
+
+Blocked or denied by default:
+- camera
+- microphone
+- screen sharing
+- geolocation
+- desktop notifications
+- WebXR / XR APIs
+
+This can affect:
+- browser-based video calls
+- meeting tools that need mic or camera access
+- screen sharing from the browser
+- sites that request geolocation for maps or local results
+- sites that rely on push / desktop notifications
+- WebXR demos or browser VR / AR experiences
+
+Additional privacy-hardening prefs already present in `firefox/user.js` may also affect behavior:
+- `network.websocket.enabled = false` can impact some real-time web apps, chats, dashboards, terminals, collaborative tools, or similar live features
+- `media.navigator.streams.fake = true` can cause unusual behavior in some media-capability checks or websites expecting normal camera / microphone failure modes
+- DRM is disabled, so some protected streaming services may not work
+- WebGL is disabled, so some 3D or graphics-heavy websites may not work correctly
+
+This profile is intentionally opinionated and favors privacy / isolation over maximum website compatibility.
