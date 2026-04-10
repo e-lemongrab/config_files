@@ -205,62 +205,29 @@ user_pref("toolkit.telemetry.sync.enabled", false);
 /****************************************************************************
  * SECTION: NEW HARDENING LINES                                             *
 ****************************************************************************/
-+user_pref("privacy.firstparty.isolate", true); // [PRIVACY CONFIGURATION]
-+user_pref("security.tls.version.min", 3);      // [SECURITY]
-+user_pref("security.tls.version.max", 4);      // [SECURITY]
-+user_pref("gfx.downloadable_fonts.enabled", false); // [GFX]
-+user_pref("font.internaluseonly", true);           // [GFX]
-+user_pref("signon.rememberSignons", false);        // [SECURITY]
-+user_pref("extensions.pocket.enabled", false);     // [FIREFOX CONFIGURATION]
-+user_pref("privacy.resistFingerprinting.aggressive", true); // [SECURITY]
-+user_pref("canvas.poisondata", "");                // [SECURITY]
-+user_pref("dom.battery.enabled", false);           // [SECURITY]
-+user_pref("dom.webnotifications.enabled", false);  // [SECURITY]
-+user_pref("dom.push.enabled", false);              // [SECURITY]
 /****************************************************************************
  * SECTION: PRIVACY CONFIGURATION (isolation & partitioning)
 ****************************************************************************/
-+user_pref("privacy.resistFingerprinting.letterboxing", true);           // pad window size to reduce FP
-+user_pref("privacy.partition.network_state", true);                     // partition caches, connections
-+user_pref("privacy.partition.serviceWorkers", true);                    // partition SW scope/storage
-+user_pref("privacy.partition.always_partition_third_party_non_cookie_storage", true); // partition more non-cookie storage
 
 /****************************************************************************
  * SECTION: SECURITY (referrer, HTTPS, permissions)
 ****************************************************************************/
-+user_pref("network.http.referer.XOriginPolicy", 2);                     // no referrer sent cross-site
-+user_pref("network.http.referer.trimmingPolicy", 2);                    // strip path & query from referrer
-+user_pref("network.http.referer.XOriginTrimmingPolicy", 2);             // enforce trimming on cross-site
-+user_pref("dom.security.https_only_mode_send_http_background_request", false); // no background HTTP probes
-+user_pref("permissions.delegation.enabled", false);                     // sites can't auto-grant perms
 
 /****************************************************************************
  * SECTION: NETWORK (speculative connections, connectivity checks)
 ****************************************************************************/
-+user_pref("browser.urlbar.speculativeConnect.enabled", false);          // stop speculative connects
-+user_pref("network.http.speculative-parallel-limit", 0);                // no pre-connect bursts
-+user_pref("network.captive-portal-service.enabled", false);             // no captive-portal pings
-+user_pref("network.connectivity-service.enabled", false);               // no connectivity checks
-+user_pref("network.IDN_show_punycode", true);                           // show punycode to avoid IDN spoofs
 
 /****************************************************************************
  * SECTION: GFX / FINGERPRINTING
 ****************************************************************************/
-+user_pref("webgl.disabled", true);                                      // reduce FP surface (breaks 3D/WebGL)
-+user_pref("device.sensors.enabled", false);                              // disable motion/orientation sensors
-+user_pref("dom.gamepad.enabled", false);                                 // gamepad FP off
-+user_pref("dom.netinfo.enabled", false);                                 // hide network type/speed API
 
 /****************************************************************************
  * SECTION: MEDIA / DRM (optional but stronger privacy)
 ****************************************************************************/
-+user_pref("media.eme.enabled", false);                                   // disable DRM (breaks some streaming)
-+user_pref("media.gmp-widevinecdm.enabled", false);                       // disable Widevine module
 
 /****************************************************************************
  * SECTION: MISC PRIVACY
 ****************************************************************************/
-+user_pref("beacon.enabled", false);                                      // block navigator.sendBeacon()
 
 user_pref("layout.css.font-visibility", 1);  // "base" fonts only
 user_pref("security.ssl.require_safe_negotiation", true);
