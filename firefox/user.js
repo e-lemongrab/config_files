@@ -154,6 +154,14 @@ user_pref("javascript.options.wasm.simd", false);
 user_pref("media.autoplay.default", 1);
 user_pref("privacy.trackingprotection.pbmode.enabled", true);
 user_pref("privacy.socialtracking.block", true);
+user_pref("browser.sessionstore.privacy_level", 2);
+user_pref("browser.send_pings", false);
+user_pref("permissions.default.camera", 2);
+user_pref("permissions.default.microphone", 2);
+user_pref("permissions.default.geo", 2);
+user_pref("permissions.default.screen", 2);
+user_pref("permissions.default.desktop-notification", 2);
+user_pref("permissions.default.xr", 2);
 
 // (your file had dom.allow_cut_copy commented out, leaving as-is)
 
@@ -257,6 +265,8 @@ user_pref("media.gmp-widevinecdm.enabled", false);                       // disa
  * SECTION: MISC PRIVACY
 ****************************************************************************/
 user_pref("beacon.enabled", false);                                      // block navigator.sendBeacon()
+user_pref("dom.private-attribution.submission.enabled", false);
+user_pref("dom.private-attribution.reporting.enabled", false);
 
 user_pref("layout.css.font-visibility", 1);  // "base" fonts only
 user_pref("security.ssl.require_safe_negotiation", true);
