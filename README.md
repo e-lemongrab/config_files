@@ -31,6 +31,17 @@ Target locations:
 
 Expected locations depend on your setup. This repository stores the source files, but deployment / copy / symlink strategy may be handled externally.
 
+Recommended paths when deploying locally:
+- `~/.config/hypr/hyprland.conf`
+- `~/.config/hypr/wallpaper/wallpaper-rotation.sh`
+
+Hyprland notes:
+- monitor definitions are reference values and may need local adjustment
+- external programs such as IDE, browser, launcher/menu, and file manager are not a `myshell` integration contract; they are reference values and can be changed or removed locally
+- screenshot output paths are local preference
+- keyboard layout and other input preferences are local preference
+- optional local scripts such as NVIDIA fan control may exist outside this repo and may be managed separately
+
 ### WSL
 - `wsl/.wslconfig`
 
