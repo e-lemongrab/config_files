@@ -6,7 +6,7 @@ MONITORS=("DP-6" "HDMI-A-2")
 
 while true; do
   # Pick a random wallpaper (image or video)
-  FILE=$(find "$WALLPAPER_DIR" -maxdepth 1 -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \) | shuf -n 1)
+  FILE=$(find "$WALLPAPER_DIR" -maxdepth 1 -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' -o -iname '*.mp4' \) | shuf -n 1)
 
   # Kill any running mpvpaper instance (for video wallpapers)
   pkill mpvpaper
