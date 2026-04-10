@@ -1,6 +1,47 @@
 # Config_files
 
-Public repo for configuration files.
+Public repo for configuration files used directly and also consumed by `myshell` through its `config_files` profile.
+
+## Contents
+
+### Firefox
+- `firefox/user.js`
+- privacy-focused Firefox profile defaults and notes about expected compatibility tradeoffs
+
+Target location:
+- Firefox profile directory: `~/.mozilla/firefox/<profile>/user.js`
+
+### Home dotfiles
+- `home/.vimrc`
+- `home/.tmux.conf`
+- `home/.inputrc`
+- `home/.gitconfig`
+- `home/.alacritty.toml`
+
+Target locations:
+- `~/.vimrc`
+- `~/.tmux.conf`
+- `~/.inputrc`
+- `~/.gitconfig`
+- `~/.alacritty.toml`
+
+### Hyprland
+- `hyprland/hyprland.conf`
+- `hyprland/wallpaper/wallpaper-rotation.sh`
+
+Expected locations depend on your setup. This repository stores the source files, but deployment / copy / symlink strategy may be handled externally.
+
+### WSL
+- `wsl/.wslconfig`
+
+Target location:
+- Windows user profile: `%UserProfile%\.wslconfig`
+
+## Integration with `myshell`
+
+This repository is also consumed by `myshell` through the `config_files` profile. In that model, `myshell` is the bootstrap / installer side, while this repository acts as the source of truth for the configuration files.
+
+That means portability matters here: unnecessary machine-specific assumptions in these files can affect `myshell` installs too.
 
 ## Firefox `user.js`
 
@@ -44,3 +85,7 @@ Additional privacy-hardening prefs already present in `firefox/user.js` may also
 - WebGL is disabled, so some 3D or graphics-heavy websites may not work correctly
 
 This profile is intentionally opinionated and favors privacy / isolation over maximum website compatibility.
+
+## Notes on machine-specific config
+
+Some files in this repository may still contain personal or environment-specific paths. Where that happens, they should be treated as custom config, and ideally cleaned up over time if they are expected to be reused through `myshell` or on other machines.
