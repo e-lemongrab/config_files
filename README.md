@@ -40,7 +40,6 @@ Hyprland notes:
 - external programs such as IDE, browser, launcher/menu, and file manager are not a `myshell` integration contract; they are reference values and can be changed or removed locally
 - screenshot output paths are local preference
 - keyboard layout and other input preferences are local preference
-- optional local scripts such as NVIDIA fan control may exist outside this repo and may be managed separately
 - `hyprpaper.conf` is intentionally minimal so `hyprpaper` can start with a valid config; wallpaper selection is handled by the rotation script/service
 - wallpaper rotation can also be deployed as a user service instead of being launched from `hyprland.conf`
 - NVIDIA fan control can also be deployed as a user service instead of being launched from `hyprland.conf`
@@ -49,17 +48,18 @@ Hyprland notes:
 - `services/hyprland/hypr-wallpaper.service`
 - `services/hyprland/wallpaper-rotation.sh`
 - `services/nvidia/nvidia-fan.service`
+- `services/nvidia/nvidiafan.sh`
 
 Recommended paths when deploying locally:
 - `~/.config/systemd/user/hypr-wallpaper.service`
 - `~/.config/systemd/user/nvidia-fan.service`
-- consumer repos may keep scripts in repo-managed paths and rewrite the unit accordingly
+- `~/.config/hypr/wallpaper-rotation.sh`
+- `~/.config/nvidia/nvidiafan.sh`
 
 Service notes:
 - `hypr-wallpaper.service` is a user service intended to run wallpaper rotation independently from shell startup
 - `nvidia-fan.service` is a user service definition for NVIDIA fan control
-- the NVIDIA fan script itself is still treated as external/local in this repo and is not yet versioned here
-- consumer repos such as `myshell` may rewrite or template service units so `ExecStart` points to a repo-managed path based on their own install logic
+- both service scripts are versioned in this repo and can be deployed by consumer repos such as `myshell`
 
 #### Service prerequisites
 
@@ -76,7 +76,7 @@ Service notes:
 - `nvidia-settings`
 - `sudo`
 - `xhost`
-- a local NVIDIA fan script available at the expected path
+- the deployed script path must match the service `ExecStart` path
 - `sudo` for `nvidia-settings` must work non-interactively in the user-session context
 - the service depends on the graphical session being ready; a startup delay is used to avoid race conditions at login
 
