@@ -27,13 +27,11 @@ Target locations:
 
 ### Hyprland
 - `hyprland/hyprland.conf`
-- `hyprland/wallpaper/wallpaper-rotation.sh`
 
 Expected locations depend on your setup. This repository stores the source files, but deployment / copy / symlink strategy may be handled externally.
 
 Recommended paths when deploying locally:
 - `~/.config/hypr/hyprland.conf`
-- `~/.config/hypr/wallpaper/wallpaper-rotation.sh`
 
 Hyprland notes:
 - monitor definitions are reference values and may need local adjustment
