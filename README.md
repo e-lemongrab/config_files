@@ -61,6 +61,25 @@ Service notes:
 - the NVIDIA fan script itself is still treated as external/local in this repo and is not yet versioned here
 - consumer repos such as `myshell` may rewrite or template service units so `ExecStart` points to a repo-managed path based on their own install logic
 
+#### Service prerequisites
+
+`hypr-wallpaper.service`:
+- `hyprpaper`
+- `hyprctl`
+- `hyprpaper.conf` must exist and be valid
+- a local wallpaper directory must exist and the script must point to it through `WALLPAPER_DIR`
+- `mpvpaper` is additionally required if video wallpapers are used
+- `INTERVAL`, monitor names, and wallpaper path are local runtime values that may need adjustment
+
+`nvidia-fan.service`:
+- `nvidia-smi`
+- `nvidia-settings`
+- `sudo`
+- `xhost`
+- a local NVIDIA fan script available at the expected path
+- `sudo` for `nvidia-settings` must work non-interactively in the user-session context
+- the service depends on the graphical session being ready; a startup delay is used to avoid race conditions at login
+
 ### WSL
 - `wsl/.wslconfig`
 
