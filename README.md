@@ -27,13 +27,11 @@ Target locations:
 
 ### Hyprland
 - `hyprland/hyprland.conf`
-- `hyprland/wallpaper/wallpaper-rotation.sh`
 
 Expected locations depend on your setup. This repository stores the source files, but deployment / copy / symlink strategy may be handled externally.
 
 Recommended paths when deploying locally:
 - `~/.config/hypr/hyprland.conf`
-- `~/.config/hypr/wallpaper/wallpaper-rotation.sh`
 
 Hyprland notes:
 - monitor definitions are reference values and may need local adjustment
@@ -41,6 +39,19 @@ Hyprland notes:
 - screenshot output paths are local preference
 - keyboard layout and other input preferences are local preference
 - optional local scripts such as NVIDIA fan control may exist outside this repo and may be managed separately
+- wallpaper rotation can also be deployed as a user service instead of being launched from `hyprland.conf`
+
+### Services
+- `services/hyprland/hypr-wallpaper.service`
+- `services/hyprland/wallpaper-rotation.sh`
+
+Recommended paths when deploying locally:
+- `~/.config/systemd/user/hypr-wallpaper.service`
+- consumer repos may keep the script in a repo-managed path and rewrite the unit accordingly
+
+Service notes:
+- `hypr-wallpaper.service` is a user service intended to run wallpaper rotation independently from shell startup
+- consumer repos such as `myshell` may rewrite or template the service unit so `ExecStart` points to a repo-managed path based on their own install logic
 
 ### WSL
 - `wsl/.wslconfig`
