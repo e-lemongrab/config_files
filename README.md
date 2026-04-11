@@ -27,11 +27,13 @@ Target locations:
 
 ### Hyprland
 - `hyprland/hyprland.conf`
+- `hyprland/hyprpaper.conf`
 
 Expected locations depend on your setup. This repository stores the source files, but deployment / copy / symlink strategy may be handled externally.
 
 Recommended paths when deploying locally:
 - `~/.config/hypr/hyprland.conf`
+- `~/.config/hypr/hyprpaper.conf`
 
 Hyprland notes:
 - monitor definitions are reference values and may need local adjustment
@@ -39,6 +41,7 @@ Hyprland notes:
 - screenshot output paths are local preference
 - keyboard layout and other input preferences are local preference
 - optional local scripts such as NVIDIA fan control may exist outside this repo and may be managed separately
+- `hyprpaper.conf` is intentionally minimal so `hyprpaper` can start with a valid config; wallpaper selection is handled by the rotation script/service
 - wallpaper rotation can also be deployed as a user service instead of being launched from `hyprland.conf`
 - NVIDIA fan control can also be deployed as a user service instead of being launched from `hyprland.conf`
 
