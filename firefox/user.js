@@ -118,11 +118,11 @@ user_pref("browser.urlbar.suggest.topsites", false);
 ****************************************************************************/
 user_pref("privacy.annotate_channels.strict_list.enabled", true);
 
-user_pref("privacy.clearOnShutdown.cookies", true);
+user_pref("privacy.clearOnShutdown.cookies", false);
 
 user_pref("privacy.clearOnShutdown.offlineApps", true);
 
-user_pref("privacy.clearOnShutdown.sessions", true);
+user_pref("privacy.clearOnShutdown.sessions", false);
 
 user_pref("privacy.clearOnShutdown.siteSettings", true);
 user_pref("privacy.clearOnShutdown_v2.siteSettings", true);
@@ -216,7 +216,7 @@ user_pref("toolkit.telemetry.sync.enabled", false);
 user_pref("privacy.firstparty.isolate", true); // [PRIVACY CONFIGURATION]
 user_pref("security.tls.version.min", 3);      // [SECURITY]
 user_pref("security.tls.version.max", 4);      // [SECURITY]
-user_pref("signon.rememberSignons", false);        // [SECURITY]
+user_pref("signon.rememberSignons", true);         // [SECURITY]
 user_pref("extensions.pocket.enabled", false);     // [FIREFOX CONFIGURATION]
 user_pref("dom.battery.enabled", false);           // [SECURITY]
 user_pref("dom.webnotifications.enabled", false);  // [SECURITY]
@@ -224,7 +224,7 @@ user_pref("dom.push.enabled", false);              // [SECURITY]
 /****************************************************************************
  * SECTION: PRIVACY CONFIGURATION (isolation & partitioning)
 ****************************************************************************/
-user_pref("privacy.resistFingerprinting.letterboxing", true);           // pad window size to reduce FP
+user_pref("privacy.resistFingerprinting.letterboxing", false);          // keep RFP without visible margins
 user_pref("privacy.partition.network_state", true);                     // partition caches, connections
 user_pref("privacy.partition.serviceWorkers", true);                    // partition SW scope/storage
 user_pref("privacy.partition.always_partition_third_party_non_cookie_storage", true); // partition more non-cookie storage
