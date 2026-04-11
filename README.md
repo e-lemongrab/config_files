@@ -59,7 +59,7 @@ Recommended paths when deploying locally:
 Service notes:
 - `hypr-wallpaper.service` is a user service intended to run wallpaper rotation independently from shell startup
 - `nvidia-fan.service` is a user service definition for NVIDIA fan control
-- both service scripts are now versioned in this repo and can be deployed by consumer repos such as `myshell`
+- both service scripts are versioned in this repo and can be deployed by consumer repos such as `myshell`
 
 #### Service prerequisites
 
@@ -76,7 +76,7 @@ Service notes:
 - `nvidia-settings`
 - `sudo`
 - `xhost`
-- the local script path used by deployment must match the service `ExecStart`
+- the deployed script path must match the service `ExecStart` path
 - `sudo` for `nvidia-settings` must work non-interactively in the user-session context
 - the service depends on the graphical session being ready; a startup delay is used to avoid race conditions at login
 
