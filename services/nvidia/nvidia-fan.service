@@ -5,6 +5,7 @@ Wants=graphical-session.target
 
 [Service]
 Type=simple
+ExecStartPre=/bin/sleep 10
 ExecStart=%h/Documents/doc/z_linux/nvidia/nvidiafan.sh
 Restart=on-failure
 RestartSec=5
