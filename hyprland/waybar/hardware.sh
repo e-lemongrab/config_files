@@ -3,11 +3,8 @@
 # CPU temp
 cpu_temp=$(sensors | awk '/k10temp-pci-00c3/,/^$/ { if ($1 == "Tctl:") print $2 }' | sed 's/+//;s/°C//')
 
-# Since you have AMD GPU, disable nvidia-smi or remove it (replace with amdgpu temp)
-# For now, let's get GPU temp from amdgpu:
-gpu_temp=$(sensors | awk '/amdgpu-pci-1000/,/^$/ { if ($1 == "edge:") print $2 }' | sed 's/+//;s/°C//')
-
-# NVIDIA GPU fan speed in percent using nvidia-smi
+# NVIDIA GPU temperature and fan speed using nvidia-smi
+gpu_temp=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits 2>/dev/null || echo "N/A")
 fan_speed=$(nvidia-smi --query-gpu=fan.speed --format=csv,noheader,nounits 2>/dev/null || echo "N/A")
 
 # CPU usage percentage
