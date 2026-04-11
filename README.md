@@ -40,18 +40,23 @@ Hyprland notes:
 - keyboard layout and other input preferences are local preference
 - optional local scripts such as NVIDIA fan control may exist outside this repo and may be managed separately
 - wallpaper rotation can also be deployed as a user service instead of being launched from `hyprland.conf`
+- NVIDIA fan control can also be deployed as a user service instead of being launched from `hyprland.conf`
 
 ### Services
 - `services/hyprland/hypr-wallpaper.service`
 - `services/hyprland/wallpaper-rotation.sh`
+- `services/nvidia/nvidia-fan.service`
 
 Recommended paths when deploying locally:
 - `~/.config/systemd/user/hypr-wallpaper.service`
-- consumer repos may keep the script in a repo-managed path and rewrite the unit accordingly
+- `~/.config/systemd/user/nvidia-fan.service`
+- consumer repos may keep scripts in repo-managed paths and rewrite the unit accordingly
 
 Service notes:
 - `hypr-wallpaper.service` is a user service intended to run wallpaper rotation independently from shell startup
-- consumer repos such as `myshell` may rewrite or template the service unit so `ExecStart` points to a repo-managed path based on their own install logic
+- `nvidia-fan.service` is a user service definition for NVIDIA fan control
+- the NVIDIA fan script itself is still treated as external/local in this repo and is not yet versioned here
+- consumer repos such as `myshell` may rewrite or template service units so `ExecStart` points to a repo-managed path based on their own install logic
 
 ### WSL
 - `wsl/.wslconfig`
