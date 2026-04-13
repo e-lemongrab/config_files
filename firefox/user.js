@@ -2,38 +2,39 @@
  * SECTION: GENERAL                                                        *
 ****************************************************************************/
 user_pref("content.notify.interval", 100000);
+user_pref("browser.sessionstore.interval", 60000);
 
 /****************************************************************************
  * SECTION: GFX                                                            *
 ****************************************************************************/
-user_pref("gfx.canvas.accelerated.cache-size", 512);
-user_pref("gfx.content.skia-font-cache-size", 20);
+user_pref("gfx.canvas.accelerated.cache-size", 1024);
+user_pref("gfx.content.skia-font-cache-size", 80);
 user_pref("browser.tabs.hoverPreview.enabled", false);
 user_pref("browser.tabs.hoverPreview.showThumbnails", false);
 
 /****************************************************************************
  * SECTION: DISK CACHE                                                     *
 ****************************************************************************/
-user_pref("browser.cache.disk.enable", false);
+user_pref("browser.cache.disk.enable", true);
 
 /****************************************************************************
  * SECTION: MEDIA CACHE                                                    *
 ****************************************************************************/
-user_pref("media.memory_cache_max_size", 65536);
-user_pref("media.cache_readahead_limit", 7200);
-user_pref("media.cache_resume_threshold", 3600);
+user_pref("media.memory_cache_max_size", 131072);
+user_pref("media.cache_readahead_limit", 14400);
+user_pref("media.cache_resume_threshold", 7200);
 
 /****************************************************************************
  * SECTION: IMAGE CACHE                                                    *
 ****************************************************************************/
-user_pref("image.mem.decode_bytes_at_a_time", 32768);
+user_pref("image.mem.decode_bytes_at_a_time", 65536);
 
 /****************************************************************************
  * SECTION: NETWORK                                                         *
 ****************************************************************************/
-user_pref("network.http.max-connections", 256);
+user_pref("network.http.max-connections", 512);
 
-user_pref("network.http.max-persistent-connections-per-server", 6);
+user_pref("network.http.max-persistent-connections-per-server", 10);
 
 user_pref("network.http.max-urgent-start-excessive-connections-per-host", 5);
 user_pref("network.http.pacing.requests.enabled", false);
