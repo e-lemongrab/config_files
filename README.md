@@ -40,36 +40,23 @@ Hyprland notes:
 - external programs such as IDE, browser, launcher/menu, and file manager are not a `myshell` integration contract; they are reference values and can be changed or removed locally
 - screenshot output paths are local preference
 - keyboard layout and other input preferences are local preference
-- `hyprpaper.conf` is intentionally minimal so `hyprpaper` can start with a valid config; wallpaper selection is handled by the rotation script/service
-- wallpaper rotation can also be deployed as a user service instead of being launched from `hyprland.conf`
+- `hyprpaper.conf` is now the source of truth for wallpaper assignment and timed rotation through native `hyprpaper` config
+- wallpaper handling is expected to run through `hyprpaper.service` instead of a custom rotation script
 - NVIDIA fan control can also be deployed as a user service instead of being launched from `hyprland.conf`
 
 ### Services
-- `services/hyprland/hypr-wallpaper.service`
-- `services/hyprland/wallpaper-rotation.sh`
 - `services/nvidia/nvidia-fan.service`
 - `services/nvidia/nvidiafan.sh`
 
 Recommended paths when deploying locally:
-- `~/.config/systemd/user/hypr-wallpaper.service`
 - `~/.config/systemd/user/nvidia-fan.service`
-- `~/.config/hypr/wallpaper-rotation.sh`
 - `~/.config/nvidia/nvidiafan.sh`
 
 Service notes:
-- `hypr-wallpaper.service` is a user service intended to run wallpaper rotation independently from shell startup
 - `nvidia-fan.service` is a user service definition for NVIDIA fan control
-- both service scripts are versioned in this repo and can be deployed by consumer repos such as `myshell`
+- service scripts are versioned in this repo and can be deployed by consumer repos such as `myshell`
 
 #### Service prerequisites
-
-`hypr-wallpaper.service`:
-- `hyprpaper`
-- `hyprctl`
-- `hyprpaper.conf` must exist and be valid
-- a local wallpaper directory must exist and the script must point to it through `WALLPAPER_DIR`
-- `mpvpaper` is additionally required if video wallpapers are used
-- `INTERVAL`, monitor names, and wallpaper path are local runtime values that may need adjustment
 
 `nvidia-fan.service`:
 - `nvidia-smi`
@@ -84,7 +71,7 @@ Service notes:
 - `wsl/.wslconfig`
 
 Target location:
-- Windows user profile: `%UserProfile%\.wslconfig`
+- Windows user profile: `%UserProfile%\\.wslconfig`
 
 ## Integration with `myshell`
 
