@@ -89,10 +89,28 @@ It is intended to be used together with:
 - the anti-fingerprinting and partitioning settings already enabled in `firefox/user.js`
 
 In this setup, privacy hardening does not rely on stricter cookie blocking alone, but on the combination of:
-- `privacy.resistFingerprinting`
 - `privacy.fingerprintingProtection`
-- Firefox internal partitioning / isolation preferences
+- Firefox internal partitioning preferences
 - container-based separation
+
+### Daily-use balance
+
+The profile is intentionally privacy-focused, but it is also intended to remain usable as a primary browser profile.
+
+For that reason, the current baseline avoids some of the heaviest compatibility / performance tradeoffs for daily browsing:
+- `privacy.resistFingerprinting` is disabled
+- `privacy.firstparty.isolate` is disabled
+- `network.websocket.enabled` is enabled
+- `webgl.disabled` is disabled
+
+The remaining baseline still keeps:
+- strict content blocking
+- container support
+- fingerprinting protection
+- partitioned network / service-worker / third-party storage
+- HTTPS-only mode
+- blocked-by-default camera / microphone / geolocation / screen / desktop notification / XR permissions
+- telemetry and studies disabled
 
 ### Notes on breakage / expected behavior
 
@@ -115,12 +133,10 @@ This can affect:
 - WebXR demos or browser VR / AR experiences
 
 Additional privacy-hardening prefs already present in `firefox/user.js` may also affect behavior:
-- `network.websocket.enabled = false` can impact some real-time web apps, chats, dashboards, terminals, collaborative tools, or similar live features
 - `media.navigator.streams.fake = true` can cause unusual behavior in some media-capability checks or websites expecting normal camera / microphone failure modes
 - DRM is disabled, so some protected streaming services may not work
-- WebGL is disabled, so some 3D or graphics-heavy websites may not work correctly
 
-This profile is intentionally opinionated and favors privacy / isolation over maximum website compatibility.
+This profile is intentionally opinionated and favors privacy / isolation, while aiming to avoid the most noticeable daily-use performance regressions for modern web apps.
 
 ## Notes on machine-specific config
 
