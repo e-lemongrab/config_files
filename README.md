@@ -102,6 +102,8 @@ For that reason, the current baseline avoids some of the heaviest compatibility 
 - `privacy.firstparty.isolate` is disabled
 - `network.websocket.enabled` is enabled
 - `webgl.disabled` is disabled
+- `javascript.options.wasm.simd` is enabled
+- font visibility is permissive in normal/private/tracking-protection contexts and only strict under Resist Fingerprinting
 
 The remaining baseline still keeps:
 - strict content blocking
