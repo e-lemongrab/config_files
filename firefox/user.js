@@ -7,7 +7,7 @@ user_pref("browser.sessionstore.interval", 60000);
 /****************************************************************************
  * SECTION: GFX                                                            *
 ****************************************************************************/
-user_pref("gfx.canvas.accelerated.cache-size", 1024);
+user_pref("gfx.canvas.accelerated.cache-size", 256);
 user_pref("gfx.content.skia-font-cache-size", 80);
 user_pref("browser.tabs.hoverPreview.enabled", false);
 user_pref("browser.tabs.hoverPreview.showThumbnails", false);
@@ -151,7 +151,7 @@ user_pref("network.cookie.cookieBehavior", 1);
 user_pref("privacy.trackingprotection.enabled", true);
 user_pref("privacy.resistFingerprinting", false);
 user_pref("geo.enabled", false);
-user_pref("javascript.options.wasm.simd", false);
+user_pref("javascript.options.wasm.simd", true);
 user_pref("media.autoplay.default", 1);
 user_pref("privacy.trackingprotection.pbmode.enabled", true);
 user_pref("privacy.socialtracking.block", true);
@@ -269,5 +269,8 @@ user_pref("beacon.enabled", false);                                      // bloc
 user_pref("dom.private-attribution.submission.enabled", false);
 user_pref("dom.private-attribution.reporting.enabled", false);
 
-user_pref("layout.css.font-visibility", 1);  // "base" fonts only
+user_pref("layout.css.font-visibility.standard", 3);                    // normal browsing can use user fonts
+user_pref("layout.css.font-visibility.trackingprotection", 3);          // keep normal rendering under ETP
+user_pref("layout.css.font-visibility.private", 3);                     // private browsing still usable
+user_pref("layout.css.font-visibility.resistFingerprinting", 1);        // keep strict font exposure only with RFP
 user_pref("security.ssl.require_safe_negotiation", true);
