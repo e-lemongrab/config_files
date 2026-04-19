@@ -149,7 +149,7 @@ user_pref("privacy.userContext.ui.enabled", true);
 user_pref("security.app_menu.recordEventTelemetry", false);
 user_pref("network.cookie.cookieBehavior", 1);
 user_pref("privacy.trackingprotection.enabled", true);
-user_pref("privacy.resistFingerprinting", true);
+user_pref("privacy.resistFingerprinting", false);
 user_pref("geo.enabled", false);
 user_pref("javascript.options.wasm.simd", false);
 user_pref("media.autoplay.default", 1);
@@ -176,7 +176,7 @@ user_pref("media.navigator.enabled", false);
 user_pref("security.certerrors.recordEventTelemetry", false);
 user_pref("security.protectionspopup.recordEventTelemetry", false);
 user_pref("media.navigator.streams.fake", true);
-user_pref("network.websocket.enabled", false);
+user_pref("network.websocket.enabled", true);
 user_pref("media.getusermedia.screensharing.enabled", false);
 user_pref("media.navigator.permission.disabled", true);
 user_pref("media.capture.mouse", false);
@@ -214,7 +214,7 @@ user_pref("toolkit.telemetry.sync.enabled", false);
 /****************************************************************************
  * SECTION: NEW HARDENING LINES                                             *
 ****************************************************************************/
-user_pref("privacy.firstparty.isolate", true); // [PRIVACY CONFIGURATION]
+user_pref("privacy.firstparty.isolate", false); // rely on modern partitioning for daily-use balance
 user_pref("security.tls.version.min", 3);      // [SECURITY]
 user_pref("security.tls.version.max", 4);      // [SECURITY]
 user_pref("signon.rememberSignons", true);         // [SECURITY]
@@ -225,7 +225,7 @@ user_pref("dom.push.enabled", false);              // [SECURITY]
 /****************************************************************************
  * SECTION: PRIVACY CONFIGURATION (isolation & partitioning)
 ****************************************************************************/
-user_pref("privacy.resistFingerprinting.letterboxing", false);          // keep RFP without visible margins
+user_pref("privacy.resistFingerprinting.letterboxing", false);          // keep disabled; daily-use profile avoids RFP overhead
 user_pref("privacy.partition.network_state", true);                     // partition caches, connections
 user_pref("privacy.partition.serviceWorkers", true);                    // partition SW scope/storage
 user_pref("privacy.partition.always_partition_third_party_non_cookie_storage", true); // partition more non-cookie storage
@@ -251,7 +251,7 @@ user_pref("network.IDN_show_punycode", true);                           // show 
 /****************************************************************************
  * SECTION: GFX / FINGERPRINTING
 ****************************************************************************/
-user_pref("webgl.disabled", true);                                      // reduce FP surface (breaks 3D/WebGL)
+user_pref("webgl.disabled", false);                                     // keep compatibility/perf for modern web apps
 user_pref("device.sensors.enabled", false);                              // disable motion/orientation sensors
 user_pref("dom.gamepad.enabled", false);                                 // gamepad FP off
 user_pref("dom.netinfo.enabled", false);                                 // hide network type/speed API
