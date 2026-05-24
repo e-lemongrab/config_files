@@ -14,15 +14,16 @@
     "custom/reboot",
     "custom/poweroff",
     "clock",
+    "custom/notifications",
     "custom/audio_switch",
     "pulseaudio",
     "tray"
   ],
 
   "custom/logout": {
-      "format": "",
-      "tooltip": "Logout",
-      "on-click": "hyprctl dispatch exit",
+    "format": "",
+    "tooltip": "Logout",
+    "on-click": "hyprctl dispatch exit"
   },
 
   "custom/reboot": {
@@ -30,7 +31,7 @@
     "tooltip": "Reboot",
     "on-click": "systemctl reboot"
   },
-  
+
   "custom/poweroff": {
     "format": "",
     "tooltip": "Power Off",
@@ -42,10 +43,17 @@
     "tooltip-format": "{:%A, %B %d, %Y}"
   },
 
+  "custom/notifications": {
+    "format": "󰂚",
+    "tooltip": "Notifications",
+    "on-click": "swaync-client -t",
+    "on-click-right": "swaync-client -d"
+  },
+
   "custom/audio_switch": {
     "format": "",
     "tooltip": "Select audio output",
-    "on-click": "~/.config/waybar/audio_switch.sh",
+    "on-click": "~/.config/waybar/audio_switch.sh"
   },
 
   "pulseaudio": {

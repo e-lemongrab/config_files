@@ -1,0 +1,97 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* Centro de notificaciones */
+.control-center {
+    background: rgba(30, 30, 46, 0.94);
+    color: #cdd6f4;
+    border-radius: 4px;
+    border: 1px solid rgba(205, 214, 244, 0.22);
+    padding: 10px;
+}
+
+/* Ventana popup de notificación */
+.notification {
+    background: rgba(30, 30, 46, 0.96);
+    color: #cdd6f4;
+    border-radius: 4px;
+    border: 1px solid rgba(205, 214, 244, 0.25);
+    margin: 6px;
+    padding: 8px;
+}
+
+/* Contenido de cada notificación */
+.notification-content {
+    background: transparent;
+    color: #cdd6f4;
+    padding: 8px;
+}
+
+/* Título */
+.summary {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+/* Texto */
+.body {
+    color: #cdd6f4;
+    font-size: 14px;
+}
+
+/* Botones */
+button {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    border-radius: 4px;
+    border: 1px solid rgba(205, 214, 244, 0.18);
+    padding: 6px 10px;
+}
+
+button:hover {
+    background: #f38ba8;
+    color: #1e1e2e;
+}
+
+/* Botón cerrar */
+.close-button {
+    background: #f38ba8;
+    color: #1e1e2e;
+    border-radius: 4px;
+}
+
+/* Separadores / widgets */
+.widget-title,
+.widget-dnd,
+.widget-mpris,
+.widget-buttons-grid {
+    background: rgba(205, 214, 244, 0.08);
+    color: #cdd6f4;
+    border-radius: 4px;
+    padding: 8px;
+    margin: 6px 0;
+}
+
+/* DND */
+.widget-dnd switch {
+    background: #313244;
+    border-radius: 4px;
+}
+
+.widget-dnd switch:checked {
+    background: #f38ba8;
+}
+
+/* Entrada de notificaciones en el panel */
+.notification-row {
+    outline: none;
+}
+
+.notification-row:focus,
+.notification-row:hover {
+    background: rgba(205, 214, 244, 0.08);
+    border-radius: 4px;
+}
