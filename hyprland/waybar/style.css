@@ -146,3 +146,18 @@ window#waybar {
     color: #1e1e2e;
     transition: 0.1s ease;
 }
+
+/* Dropdown terminal */
+#custom-dropdown_term {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 4px 0 4px 8px;
+}
+
+#custom-dropdown_term:hover {
+    background-color: #f38ba8;
+    color: #1e1e2e;
+    transition: 0.1s ease;
+}
