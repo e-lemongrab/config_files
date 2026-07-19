@@ -3,7 +3,11 @@
 processors=2
 memory=8GB
 swap=50GB
-swapFile=D:\\WSL2\\Arch\\swap.vhdx
+# Note: swapFile path in .wslconfig is ignored by WSL.
+# To specify a custom swap file location, use wsl.conf [automount] section
+# or create manually: sudo fallocate -l 50G /mnt/c/WSL2/swap.vhdx
+#          sudo mkswap /mnt/c/WSL2/swap.vhdx
+#          sudo swapon /mnt/c/WSL2/swap.vhdx
 # Turn on default connection to bind WSL 2 localhost to Windows localhost
 localhostforwarding=true
 # kernel=D:\\WSL\\kernel\\kernel-6-6-36-6
