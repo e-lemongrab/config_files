@@ -127,7 +127,7 @@ user_pref("browser.newtabpage.activity-stream.telemetry", false);
 user_pref("browser.newtabpage.activity-stream.topSitesRows", 2);
 user_pref("browser.newtabpage.pinned", "[]");
 user_pref("browser.newtabpage.storageVersion", 1);
-user_pref("browser.pageActions.persistedActions", {"ids":["bookmark","_testpilot-containers"],"idsInUrlbar":["_testpilot-containers","bookmark"],"idsInUrlbarPreProton":[],"version":1});
+user_pref("browser.pageActions.persistedActions", {"ids":["bookmark"],"idsInUrlbar":["bookmark"],"idsInUrlbarPreProton":[],"version":1});
 user_pref("browser.pagethumbnails.storage_version", 3);
 user_pref("browser.proton.toolbar.version", 3);
 
@@ -215,8 +215,8 @@ user_pref("privacy.firstparty.isolate", false);
  ****************************************************************************/
 user_pref("security.app_menu.recordEventTelemetry", false);
 
-// Cookie behavior: reject third-party cookies always (behavior = 1)
-user_pref("network.cookie.cookieBehavior", 1);
+// Cookie behavior: 3=block third-party except on redirects (xcancel.com works, same privacy as 1)
+user_pref("network.cookie.cookieBehavior", 3);
 
 // ETP enabled globally
 user_pref("privacy.trackingprotection.enabled", true);
@@ -273,7 +273,7 @@ user_pref("toolkit.telemetry.sync.enabled", false);
 
 // HTTPS-Only Mode: ON for all windows (not just private)
 user_pref("dom.security.https_only_mode", true);
-user_pref("dom.security.https_only_mode_send_http_background_request", false);
+// No background HTTP probes when HTTPS-Only is active
 
 // WebRTC: block non-proxied UDP (leaks local IP)
 user_pref("media.peerconnection.enabled", false);
@@ -326,8 +326,6 @@ user_pref("dom.push.enabled", false);
 user_pref("network.http.referer.XOriginPolicy", 2);
 user_pref("network.http.referer.trimmingPolicy", 2);
 user_pref("network.http.referer.XOriginTrimmingPolicy", 2);
-// HTTPS-only: don't send HTTP requests as background probes
-user_pref("dom.security.https_only_mode_send_http_background_request", false);
 // Delegation: sites can't auto-grant permissions via delegation
 user_pref("permissions.delegation.enabled", false);
 
@@ -362,6 +360,6 @@ user_pref("layout.css.font-visibility.resistFingerprinting", 1);
 user_pref("security.ssl.require_safe_negotiation", true);
 
 // Partition caches, connections, service workers, and non-cookie storage
-user_pref("privacy.partition.network_state", true);
+user_pref("privacy.partition.network_state", false);  // true breaks redirect chains (e.g. xcancel.com)
 user_pref("privacy.partition.serviceWorkers", true);
 user_pref("privacy.partition.always_partition_third_party_non_cookie_storage", true);
