@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# CPU temp
-cpu_temp=$(sensors | awk '/k10temp-pci-00c3/,/^$/ { if ($1 == "Tctl:") print $2 }' | sed 's/+//;s/°C//')
+# CPU temp — match the Tctl: line directly instead of anchoring to a PCI
+# address, which can renumber across BIOS/kernel updates.
+cpu_temp=$(sensors | awk '$1 == "Tctl:" { print $2; exit }' | sed 's/+//;s/°C//')
 
 # NVIDIA GPU temperature and fan speed using nvidia-smi
 gpu_temp=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits 2>/dev/null || echo "N/A")

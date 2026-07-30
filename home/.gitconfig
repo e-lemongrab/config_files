@@ -19,5 +19,5 @@
   local = yellow
 
 [credential]
-  helper = store
+  helper = /usr/lib/git-core/git-credential-libsecret
   useHttpPath = true

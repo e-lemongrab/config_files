@@ -71,12 +71,12 @@ user_pref("network.prefetch-next", false);
 user_pref("network.predictor.enabled", false);
 user_pref("network.predictor.enable-prefetch", false);
 
-// DO Not Track header
 user_pref("network.trr.confirmation_telemetry_enabled", false);
 
-// DNS-over-HTTPS: fallback mode (3). Uses TRR only when the native DNS
-// resolver fails. Privacy without breaking local DNS.
-user_pref("network.trr.mode", 3);
+// DNS-over-HTTPS: fallback mode (2). Uses TRR first, falls back to the
+// native DNS resolver if it fails. Privacy without breaking local DNS
+// (/etc/hosts, mDNS, VPN split-DNS, LAN hostnames).
+user_pref("network.trr.mode", 2);
 user_pref("network.trr.uri", "https://dns.quad9.net/dns-query");
 // user_pref("network.trr.uri", "https://dns.mullvad.net/dns-query");
 user_pref("network.trr.bootstrapAddress", "9.9.9.9");
@@ -215,17 +215,26 @@ user_pref("privacy.firstparty.isolate", false);
  ****************************************************************************/
 user_pref("security.app_menu.recordEventTelemetry", false);
 
-// Cookie behavior: reject third-party cookies always (behavior = 1)
-// Cookie behavior: 3=block third-party except on redirects (xcancel.com works, same privacy as 1)
-user_pref("network.cookie.cookieBehavior", 3);
+// Cookie behavior left unset: browser.contentblocking.category = "strict"
+// (line 106) manages this and defaults to 5 (Total Cookie Protection), which
+// is stronger than the old cookieBehavior=1/3 overrides used to be. If a
+// specific site breaks under strict TCP, add a per-site exception instead
+// of overriding this globally (Settings > Privacy & Security > Cookies and
+// Site Data > Manage Exceptions).
 
-// ETP enabled globally
+// ETP enabled globally. Spelled out explicitly (rather than relying on
+// "strict" implicitly) so a future edit can't silently regress these the
+// way cookieBehavior did above.
 user_pref("privacy.trackingprotection.enabled", true);
+user_pref("privacy.trackingprotection.cryptomining.enabled", true);
+user_pref("privacy.trackingprotection.fingerprinting.enabled", true);
 
 // RFP: disabled for daily use. Keeps font/screen resolution accurate so
 // sites work correctly. Partitioning provides isolation without full RFP.
 user_pref("privacy.resistFingerprinting", false);
 user_pref("privacy.resistFingerprinting.letterboxing", false);
+// Full RFP inside Private Browsing only: zero cost to the normal window.
+user_pref("privacy.resistFingerprinting.pbmode", true);
 
 // Geo: OS-level disabled; permissions default to deny
 user_pref("geo.enabled", false);
@@ -276,9 +285,11 @@ user_pref("toolkit.telemetry.sync.enabled", false);
 user_pref("dom.security.https_only_mode", true);
 // No background HTTP probes when HTTPS-Only is active
 
-// WebRTC: block non-proxied UDP (leaks local IP)
-user_pref("media.peerconnection.enabled", false);
-user_pref("media.navigator.enabled", false);
+// WebRTC: block non-proxied UDP / local IP leaks via ICE candidates, while
+// keeping WebRTC calling (Meet, Discord, Zoom web, etc.) functional. Camera/
+// mic still default-deny via permissions.default.camera/microphone above.
+user_pref("media.peerconnection.ice.default_address_only", true);
+user_pref("media.peerconnection.ice.no_host", true);
 
 // Certificate error telemetry: off
 user_pref("security.certerrors.recordEventTelemetry", false);
@@ -361,6 +372,9 @@ user_pref("layout.css.font-visibility.resistFingerprinting", 1);
 user_pref("security.ssl.require_safe_negotiation", true);
 
 // Partition caches, connections, service workers, and non-cookie storage
-user_pref("privacy.partition.network_state", false);  // true breaks redirect chains (e.g. xcancel.com)
+// (double-keyed isolation, backs Total Cookie Protection). If a specific
+// site breaks under this, use a per-site exception rather than disabling
+// it globally.
+user_pref("privacy.partition.network_state", true);
 user_pref("privacy.partition.serviceWorkers", true);
 user_pref("privacy.partition.always_partition_third_party_non_cookie_storage", true);

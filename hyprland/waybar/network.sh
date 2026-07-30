@@ -7,8 +7,8 @@ if [ -z "$INTERFACE" ]; then
     exit
 fi
 
-# Temporary file to store previous state
-STATE="/tmp/waybar_net_$INTERFACE"
+# Per-session state file (survives across waybar reloads, cleaned up on logout)
+STATE="${XDG_RUNTIME_DIR:-/tmp}/waybar_net_$INTERFACE"
 
 # Current bytes received and sent
 RX=$(cat /sys/class/net/$INTERFACE/statistics/rx_bytes)

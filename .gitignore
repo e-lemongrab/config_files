@@ -1,0 +1,10 @@
+.env
+.env.*
+*.pem
+*.key
+*_rsa
+*_ed25519
+credentials.json
+.git-credentials
+*.p12
+*.pfx
