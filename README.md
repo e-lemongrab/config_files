@@ -81,7 +81,7 @@ That means portability matters here: unnecessary machine-specific assumptions in
 
 ## Firefox `user.js`
 
-This Firefox profile keeps `network.cookie.cookieBehavior = 1` for day-to-day compatibility.
+This Firefox profile leaves `network.cookie.cookieBehavior` unset and lets `browser.contentblocking.category = "strict"` manage it, which defaults to Total Cookie Protection (5).
 
 It is intended to be used together with:
 - NoScript

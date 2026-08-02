@@ -71,12 +71,12 @@ user_pref("network.prefetch-next", false);
 user_pref("network.predictor.enabled", false);
 user_pref("network.predictor.enable-prefetch", false);
 
-// DO Not Track header
 user_pref("network.trr.confirmation_telemetry_enabled", false);
 
-// DNS-over-HTTPS: fallback mode (3). Uses TRR only when the native DNS
-// resolver fails. Privacy without breaking local DNS.
-user_pref("network.trr.mode", 3);
+// DNS-over-HTTPS: fallback mode (2). Uses TRR first, falls back to the
+// native DNS resolver if it fails. Privacy without breaking local DNS
+// (/etc/hosts, mDNS, VPN split-DNS, LAN hostnames).
+user_pref("network.trr.mode", 2);
 user_pref("network.trr.uri", "https://dns.quad9.net/dns-query");
 // user_pref("network.trr.uri", "https://dns.mullvad.net/dns-query");
 user_pref("network.trr.bootstrapAddress", "9.9.9.9");
@@ -144,6 +144,11 @@ user_pref("browser.safebrowsing.downloads.remote.block_potentially_unwanted", fa
 user_pref("browser.safebrowsing.downloads.remote.block_uncommon", true);
 user_pref("browser.safebrowsing.blockedURIs.enabled", true);
 user_pref("browser.safebrowsing.allowOverride", false);
+
+// Pop-up blocker: ON. Only blocks pop-ups opened WITHOUT a user gesture
+// (auto/on-load); click-initiated windows (login, 2FA, document/signing
+// views on r4.com etc.) still open normally.
+user_pref("dom.disable_open_during_load", true);
 
 user_pref("browser.sidebar.position", "right");
 user_pref("browser.sidebar.visible", true);
@@ -215,17 +220,26 @@ user_pref("privacy.firstparty.isolate", false);
  ****************************************************************************/
 user_pref("security.app_menu.recordEventTelemetry", false);
 
-// Cookie behavior: reject third-party cookies always (behavior = 1)
-// Cookie behavior: 3=block third-party except on redirects (xcancel.com works, same privacy as 1)
-user_pref("network.cookie.cookieBehavior", 3);
+// Cookie behavior left unset: browser.contentblocking.category = "strict"
+// (line 106) manages this and defaults to 5 (Total Cookie Protection), which
+// is stronger than the old cookieBehavior=1/3 overrides used to be. If a
+// specific site breaks under strict TCP, add a per-site exception instead
+// of overriding this globally (Settings > Privacy & Security > Cookies and
+// Site Data > Manage Exceptions).
 
-// ETP enabled globally
+// ETP enabled globally. Spelled out explicitly (rather than relying on
+// "strict" implicitly) so a future edit can't silently regress these the
+// way cookieBehavior did above.
 user_pref("privacy.trackingprotection.enabled", true);
+user_pref("privacy.trackingprotection.cryptomining.enabled", true);
+user_pref("privacy.trackingprotection.fingerprinting.enabled", true);
 
 // RFP: disabled for daily use. Keeps font/screen resolution accurate so
 // sites work correctly. Partitioning provides isolation without full RFP.
 user_pref("privacy.resistFingerprinting", false);
 user_pref("privacy.resistFingerprinting.letterboxing", false);
+// Full RFP inside Private Browsing only: zero cost to the normal window.
+user_pref("privacy.resistFingerprinting.pbmode", true);
 
 // Geo: OS-level disabled; permissions default to deny
 user_pref("geo.enabled", false);
@@ -276,16 +290,21 @@ user_pref("toolkit.telemetry.sync.enabled", false);
 user_pref("dom.security.https_only_mode", true);
 // No background HTTP probes when HTTPS-Only is active
 
-// WebRTC: block non-proxied UDP (leaks local IP)
-user_pref("media.peerconnection.enabled", false);
-user_pref("media.navigator.enabled", false);
+// WebRTC: block non-proxied UDP / local IP leaks via ICE candidates, while
+// keeping WebRTC calling (Meet, Discord, Zoom web, etc.) functional. Camera/
+// mic still default-deny via permissions.default.camera/microphone above.
+user_pref("media.peerconnection.ice.default_address_only", true);
+user_pref("media.peerconnection.ice.no_host", true);
 
 // Certificate error telemetry: off
 user_pref("security.certerrors.recordEventTelemetry", false);
 user_pref("security.protectionspopup.recordEventTelemetry", false);
 
-// Fake camera/mic stream (prevents sites from detecting hardware absence)
-user_pref("media.navigator.streams.fake", true);
+// Fake camera/mic stream: DISABLED. A faked getUserMedia/enumerateDevices is
+// a strong bot signal that fraud/attestation JS reads directly (part of the
+// r4.com / Kraken login fix). Camera/mic are still default-deny via
+// permissions.default.camera/microphone above, so nothing is actually exposed.
+user_pref("media.navigator.streams.fake", false);
 
 // WebSocket: enabled (required for chat apps, live dashboards, games)
 user_pref("network.websocket.enabled", true);
@@ -323,9 +342,20 @@ user_pref("dom.webnotifications.enabled", false);
 // Push: disabled (tracking vector)
 user_pref("dom.push.enabled", false);
 
-// Referrer policy: no cross-site referrer
-user_pref("network.http.referer.XOriginPolicy", 2);
-user_pref("network.http.referer.trimmingPolicy", 2);
+// Referrer policy: full Referer same-origin, origin-only cross-origin.
+// The old 2/2/2 stripped the Referer entirely on cross-origin requests and
+// trimmed it to the origin same-origin, which broke real logins:
+//   - r4.com validates the Referer PATH on its same-origin API calls (needs
+//     .../portal, not just the origin) -> without it the server withholds the
+//     access token and every private-api call 401s with an empty Bearer.
+//   - Kraken (id.kraken.com -> iapi.kraken.com) just needs the Referer to
+//     EXIST cross-origin, or Cloudflare 403s the CORS preflight.
+// 0 = send full Referer same-origin (r4 works); XOriginTrimmingPolicy=2 =
+// trim to scheme+host cross-origin (Kraken works, exact path never leaks to
+// third parties). Confirmed by HAR bisection: 2/2/2 broke both, 0/0/2 fixes
+// both and leaks less cross-site than a naive 0/0/0.
+user_pref("network.http.referer.XOriginPolicy", 0);
+user_pref("network.http.referer.trimmingPolicy", 0);
 user_pref("network.http.referer.XOriginTrimmingPolicy", 2);
 // Delegation: sites can't auto-grant permissions via delegation
 user_pref("permissions.delegation.enabled", false);
@@ -357,10 +387,16 @@ user_pref("layout.css.font-visibility.trackingprotection", 3);
 user_pref("layout.css.font-visibility.private", 3);
 user_pref("layout.css.font-visibility.resistFingerprinting", 1);
 
-// SSL: require secure negotiation (block downgrade attacks)
-user_pref("security.ssl.require_safe_negotiation", true);
+// SSL: secure negotiation NOT required (Firefox default = false). Forcing it
+// true is a non-default TLS behavior that can make Firefox refuse servers
+// behind some WAFs/load balancers; relaxed as part of the r4/Kraken login fix.
+// Real downgrades are already blocked by security.tls.version.min (1.2) below.
+user_pref("security.ssl.require_safe_negotiation", false);
 
 // Partition caches, connections, service workers, and non-cookie storage
-user_pref("privacy.partition.network_state", false);  // true breaks redirect chains (e.g. xcancel.com)
+// (double-keyed isolation, backs Total Cookie Protection). If a specific
+// site breaks under this, use a per-site exception rather than disabling
+// it globally.
+user_pref("privacy.partition.network_state", true);
 user_pref("privacy.partition.serviceWorkers", true);
 user_pref("privacy.partition.always_partition_third_party_non_cookie_storage", true);

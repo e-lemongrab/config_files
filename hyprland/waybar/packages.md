@@ -1,1 +1,1 @@
-sudo pacman -S waybar ttf-jetbrains-mono-nerd bc lm_sensors
+sudo pacman -S waybar ttf-jetbrains-mono-nerd lm_sensors zenity playerctl pavucontrol pipewire-pulse nvidia-utils swaync

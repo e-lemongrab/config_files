@@ -17,6 +17,11 @@ do
   # Get the current GPU temperature
   temp=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader)
 
+  # Skip this cycle if nvidia-smi returned anything non-numeric (driver
+  # hiccup, GPU busy, suspend/resume) — the arithmetic below would otherwise
+  # error under `set -e` and kill the whole loop.
+  [[ $temp =~ ^[0-9]+$ ]] || continue
+
   # Set fan speed based on temperature ranges
   if (( temp <= 30 ))
   then
