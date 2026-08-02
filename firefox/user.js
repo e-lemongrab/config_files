@@ -295,8 +295,11 @@ user_pref("media.peerconnection.ice.no_host", true);
 user_pref("security.certerrors.recordEventTelemetry", false);
 user_pref("security.protectionspopup.recordEventTelemetry", false);
 
-// Fake camera/mic stream (prevents sites from detecting hardware absence)
-user_pref("media.navigator.streams.fake", true);
+// Fake camera/mic stream: DISABLED. A faked getUserMedia/enumerateDevices is
+// a strong bot signal that fraud/attestation JS reads directly (part of the
+// r4.com / Kraken login fix). Camera/mic are still default-deny via
+// permissions.default.camera/microphone above, so nothing is actually exposed.
+user_pref("media.navigator.streams.fake", false);
 
 // WebSocket: enabled (required for chat apps, live dashboards, games)
 user_pref("network.websocket.enabled", true);
@@ -334,9 +337,20 @@ user_pref("dom.webnotifications.enabled", false);
 // Push: disabled (tracking vector)
 user_pref("dom.push.enabled", false);
 
-// Referrer policy: no cross-site referrer
-user_pref("network.http.referer.XOriginPolicy", 2);
-user_pref("network.http.referer.trimmingPolicy", 2);
+// Referrer policy: full Referer same-origin, origin-only cross-origin.
+// The old 2/2/2 stripped the Referer entirely on cross-origin requests and
+// trimmed it to the origin same-origin, which broke real logins:
+//   - r4.com validates the Referer PATH on its same-origin API calls (needs
+//     .../portal, not just the origin) -> without it the server withholds the
+//     access token and every private-api call 401s with an empty Bearer.
+//   - Kraken (id.kraken.com -> iapi.kraken.com) just needs the Referer to
+//     EXIST cross-origin, or Cloudflare 403s the CORS preflight.
+// 0 = send full Referer same-origin (r4 works); XOriginTrimmingPolicy=2 =
+// trim to scheme+host cross-origin (Kraken works, exact path never leaks to
+// third parties). Confirmed by HAR bisection: 2/2/2 broke both, 0/0/2 fixes
+// both and leaks less cross-site than a naive 0/0/0.
+user_pref("network.http.referer.XOriginPolicy", 0);
+user_pref("network.http.referer.trimmingPolicy", 0);
 user_pref("network.http.referer.XOriginTrimmingPolicy", 2);
 // Delegation: sites can't auto-grant permissions via delegation
 user_pref("permissions.delegation.enabled", false);
@@ -368,8 +382,11 @@ user_pref("layout.css.font-visibility.trackingprotection", 3);
 user_pref("layout.css.font-visibility.private", 3);
 user_pref("layout.css.font-visibility.resistFingerprinting", 1);
 
-// SSL: require secure negotiation (block downgrade attacks)
-user_pref("security.ssl.require_safe_negotiation", true);
+// SSL: secure negotiation NOT required (Firefox default = false). Forcing it
+// true is a non-default TLS behavior that can make Firefox refuse servers
+// behind some WAFs/load balancers; relaxed as part of the r4/Kraken login fix.
+// Real downgrades are already blocked by security.tls.version.min (1.2) below.
+user_pref("security.ssl.require_safe_negotiation", false);
 
 // Partition caches, connections, service workers, and non-cookie storage
 // (double-keyed isolation, backs Total Cookie Protection). If a specific
