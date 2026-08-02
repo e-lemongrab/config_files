@@ -145,6 +145,11 @@ user_pref("browser.safebrowsing.downloads.remote.block_uncommon", true);
 user_pref("browser.safebrowsing.blockedURIs.enabled", true);
 user_pref("browser.safebrowsing.allowOverride", false);
 
+// Pop-up blocker: ON. Only blocks pop-ups opened WITHOUT a user gesture
+// (auto/on-load); click-initiated windows (login, 2FA, document/signing
+// views on r4.com etc.) still open normally.
+user_pref("dom.disable_open_during_load", true);
+
 user_pref("browser.sidebar.position", "right");
 user_pref("browser.sidebar.visible", true);
 
