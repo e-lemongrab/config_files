@@ -325,9 +325,12 @@ user_pref("services.sync.engine.tabs", false);
 user_pref("services.sync.forms.lastSync", 0);
 user_pref("services.sync.globalScore", 0);
 
-// TLS minimum: 1.2 (value=4). TLS 1.0/1.1 are broken.
-// Do NOT set to 3 (TLS 1.0) — that is a security regression.
-user_pref("security.tls.version.min", 4);
+// TLS minimum: 1.2. Enum is 1=TLS1.0, 2=TLS1.1, 3=TLS1.2, 4=TLS1.3 (NOT
+// the version number). The previous value 4 forced TLS 1.3-ONLY, which broke
+// every site that tops out at TLS 1.2 — e.g. www.marca.com failed with
+// SSL_ERROR_PROTOCOL_VERSION_ALERT. 3 blocks the broken 1.0/1.1 while still
+// allowing 1.2 and 1.3. Do NOT lower below 3.
+user_pref("security.tls.version.min", 3);
 // TLS maximum: 1.3 (value=4, default in FF152). Explicit for clarity.
 user_pref("security.tls.version.max", 4);
 
