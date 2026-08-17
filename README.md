@@ -26,14 +26,28 @@ Target locations:
 - `~/.alacritty.toml`
 
 ### Hyprland
-- `hyprland/hyprland.conf`
+- `hyprland/hyprland.lua`
+- `hyprland/hyprland.conf` (legacy, kept only for Hyprland <= 0.56)
 - `hyprland/hyprpaper.conf`
 
 Expected locations depend on your setup. This repository stores the source files, but deployment / copy / symlink strategy may be handled externally.
 
 Recommended paths when deploying locally:
-- `~/.config/hypr/hyprland.conf`
+- `~/.config/hypr/hyprland.lua`
 - `~/.config/hypr/hyprpaper.conf`
+
+#### Config format: hyprlang -> Lua
+
+Hyprland deprecated hyprlang (`hyprland.conf`) in 0.55 and removed it entirely in
+[PR #15539](https://github.com/hyprwm/Hyprland/pull/15539), merged into `main` on 2026-07-22.
+The first release without hyprlang is 0.57; `getMainConfigPath()` no longer looks for a `.conf`
+file at all, and generates a default `hyprland.lua` when none is found.
+
+- `hyprland/hyprland.lua` is the source of truth and a hand-written port of the old config
+- `hyprland/hyprland.conf` is kept only so the repo still works on 0.56 and earlier; edits should
+  land in the Lua file first, and the `.conf` can be deleted once nothing runs 0.56
+- on 0.55/0.56, if both files are deployed, `hyprland.lua` wins
+- `hyprpaper.conf` stays in hyprlang: only Hyprland itself moved to Lua, the other `hypr*` tools did not
 
 Hyprland notes:
 - monitor definitions are reference values and may need local adjustment
@@ -42,7 +56,7 @@ Hyprland notes:
 - keyboard layout and other input preferences are local preference
 - `hyprpaper.conf` is now the source of truth for wallpaper assignment and timed rotation through native `hyprpaper` config
 - wallpaper handling is expected to run through `hyprpaper.service` instead of a custom rotation script
-- NVIDIA fan control can also be deployed as a user service instead of being launched from `hyprland.conf`
+- NVIDIA fan control can also be deployed as a user service instead of being launched from the Hyprland config
 
 ### Services
 - `services/nvidia/nvidia-fan.service`
